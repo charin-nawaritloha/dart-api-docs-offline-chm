@@ -1,6 +1,8 @@
 # dart-api-docs-offline-chm
 Offline version of Dart API Documents in Microsoft® HTML Help format (chm)
 
+2025/03/07 Download latest version Dart 3.7.1 [chm format](https://github.com/charin-nawaritloha/dart-api-docs-offline-chm/raw/refs/heads/main/dart3/dart.chm)
+
 ## About
 - Original offline document from [Archive | Dart](https://dart.dev/get-dart/archive)
 - Use Microsoft® HTML Help Workshop to compile
