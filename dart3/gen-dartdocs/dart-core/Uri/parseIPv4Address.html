@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the parseIPv4Address method from the Uri class, for the Dart programming language.">
+  <title>parseIPv4Address method - Uri class - dart:core library - Dart API</title>
+  
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../../static-assets/github.css">
+  <link rel="stylesheet" href="../../static-assets/styles.css">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-core/index.html">dart:core</a></li>
+    <li><a href="../../dart-core/Uri-class.html">Uri</a></li>
+    <li class="self-crumb">parseIPv4Address static method</li>
+  </ol>
+  <div class="self-name">parseIPv4Address</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="dart-core&#47;Uri-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+  <div id="external-links" class="btn-group"><a title="View source code" class="source-link" href="https://github.com/dart-lang/sdk/blob/dcddfaba8d0a77a30afceae5958c2d20fa365c71/sdk/lib/core/uri.dart#L1397" target="_blank"><span class="material-symbols-outlined">description</span><sup>&#127760;</sup></a></div>
+<h1><span class="kind-method">parseIPv4Address</span> static method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="../../dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart-core/int-class.html">int</a></span>&gt;</span></span>
+<span class="name ">parseIPv4Address</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="parseIPv4Address-param-host"><span class="type-annotation"><a href="../../dart-core/String-class.html">String</a></span> <span class="parameter-name">host</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Parses the <code>host</code> as an IP version 4 (IPv4) address, returning the address
+as a list of 4 bytes in network byte order (big endian).</p>
+<p>Throws a <a href="../../dart-core/FormatException-class.html">FormatException</a> if <code>host</code> is not a valid IPv4 address
+representation.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">static List&lt;int&gt; parseIPv4Address(String host) =&gt;
+    _parseIPv4Address(host, 0, host.length);</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-core/index.html">dart:core</a></li>
+    <li><a href="../../dart-core/Uri-class.html">Uri</a></li>
+    <li class="self-crumb">parseIPv4Address static method</li>
+</ol>
+
+    <h5>Uri class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right"><ol>
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-core/Uri-class.html#constructors">Constructors</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/Uri.html">Uri</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/Uri.dataFromBytes.html">dataFromBytes</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/Uri.dataFromString.html">dataFromString</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/Uri.directory.html">directory</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/Uri.file.html">file</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/Uri.http.html">http</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/Uri.https.html">https</a></li>
+
+
+    
+        <li class="section-title">
+          <a href="/gen-dartdocs/dart-core/Uri-class.html#instance-properties">Properties</a>
+        </li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/authority.html">authority</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/data.html">data</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/fragment.html">fragment</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/hasAbsolutePath.html">hasAbsolutePath</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/hasAuthority.html">hasAuthority</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/hasEmptyPath.html">hasEmptyPath</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/hasFragment.html">hasFragment</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/hashCode.html">hashCode</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/hasPort.html">hasPort</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/hasQuery.html">hasQuery</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/hasScheme.html">hasScheme</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/host.html">host</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/isAbsolute.html">isAbsolute</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/origin.html">origin</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/path.html">path</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/pathSegments.html">pathSegments</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/port.html">port</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/query.html">query</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/queryParameters.html">queryParameters</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/queryParametersAll.html">queryParametersAll</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/runtimeType.html">runtimeType</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/scheme.html">scheme</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/userInfo.html">userInfo</a>
+</li>
+
+        <li class="section-title"><a href="/gen-dartdocs/dart-core/Uri-class.html#instance-methods">Methods</a></li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/isScheme.html">isScheme</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/normalizePath.html">normalizePath</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/noSuchMethod.html">noSuchMethod</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/removeFragment.html">removeFragment</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/replace.html">replace</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/resolve.html">resolve</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/resolveUri.html">resolveUri</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/toFilePath.html">toFilePath</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/toString.html">toString</a>
+</li>
+
+        <li class="section-title"><a href="/gen-dartdocs/dart-core/Uri-class.html#operators">Operators</a></li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-core/Uri/operator_equals.html">operator ==</a>
+</li>
+
+    
+
+    
+      <li class="section-title"><a href="/gen-dartdocs/dart-core/Uri-class.html#static-properties">Static properties</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/base.html">base</a></li>
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-core/Uri-class.html#static-methods">Static methods</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/decodeComponent.html">decodeComponent</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/decodeFull.html">decodeFull</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/decodeQueryComponent.html">decodeQueryComponent</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/encodeComponent.html">encodeComponent</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/encodeFull.html">encodeFull</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/encodeQueryComponent.html">encodeQueryComponent</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/parse.html">parse</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/parseIPv4Address.html">parseIPv4Address</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/parseIPv6Address.html">parseIPv6Address</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/splitQueryString.html">splitQueryString</a></li>
+        <li><a href="/gen-dartdocs/dart-core/Uri/tryParse.html">tryParse</a></li>
+
+</ol>
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    Dart
+      3.7.1
+  </span>
+  <span class="glue-footer">
+  <span class="no-break">
+    | <a href="https://dart.dev/terms" title="Terms of use" target="_blank">Terms<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy"
+      class="no-automatic-external" target="_blank">Privacy<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://dart.dev/security" title="Security philosophy and practices" target="_blank">Security<sup>&#127760;</sup></a>
+  </span>
+
+  <div class="copyright" style="font-size: 0.9em; color: darkgrey; margin-top: 0.5em;">
+    Except as otherwise noted, this site is licensed under a
+    <a style="color: darkgrey;" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      Creative Commons Attribution 4.0 International License<sup>&#127760;</sup></a>
+    and code samples are licensed under the
+    <a style="color: darkgrey;" href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external" target="_blank">
+      3-Clause BSD License<sup>&#127760;</sup></a>
+  </div>
+</span>
+
+</footer>
+
+
+
+
+<button aria-hidden="true" class="glue-footer__link glue-cookie-notification-bar-control">
+  Cookies management controls
+</button>
+
+
+</body>
+</html>
+

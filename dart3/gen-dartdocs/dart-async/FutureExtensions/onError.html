@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the onError method from the FutureExtensions extension, for the Dart programming language.">
+  <title>onError method - FutureExtensions extension - dart:async library - Dart API</title>
+  
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../../static-assets/github.css">
+  <link rel="stylesheet" href="../../static-assets/styles.css">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-async/index.html">dart:async</a></li>
+    <li><a href="../../dart-async/FutureExtensions.html">FutureExtensions<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
+    <li class="self-crumb">onError&lt;<wbr><span class="type-parameter">E extends Object</span>&gt; method</li>
+  </ol>
+  <div class="self-name">onError</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="dart-async&#47;FutureExtensions-extension-sidebar.html"
+    data-below-sidebar="">
+    <div>
+  <div id="external-links" class="btn-group"><a title="View source code" class="source-link" href="https://github.com/dart-lang/sdk/blob/dcddfaba8d0a77a30afceae5958c2d20fa365c71/sdk/lib/async/future.dart#L1071" target="_blank"><span class="material-symbols-outlined">description</span><sup>&#127760;</sup></a></div>
+<h1><span class="kind-method">onError&lt;<wbr><span class="type-parameter">E extends Object</span>&gt;</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="../../dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+<span class="name ">onError</span>&lt;<wbr><span class="type-parameter">E extends Object</span>&gt;(<wbr><ol class="parameter-list"> <li><span class="parameter" id="onError-param-handleError"><span class="type-annotation"><a href="../../dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">handleError</span>(<ol class="parameter-list single-line"> <li><span class="parameter" id="handleError-param-error"><span class="type-annotation">E</span> <span class="parameter-name">error</span>, </span></li>
+<li><span class="parameter" id="handleError-param-stackTrace"><span class="type-annotation"><a href="../../dart-core/StackTrace-class.html">StackTrace</a></span> <span class="parameter-name">stackTrace</span></span></li>
+</ol>), {</span></li>
+<li><span class="parameter" id="onError-param-test"><span class="type-annotation"><a href="../../dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<ol class="parameter-list single-line"> <li><span class="parameter" id="test-param-error"><span class="type-annotation">E</span> <span class="parameter-name">error</span></span></li>
+</ol>)?, </span></li>
+</ol>})
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Handles errors on this future.</p>
+<p>Catches errors of type <code>E</code> that this future complete with.
+If <code>test</code> is supplied, only catches errors of type <code>E</code>
+where <code>test</code> returns <code>true</code>.
+If <code>E</code> is <a href="../../dart-core/Object-class.html">Object</a>, then all errors are potentially caught,
+depending only on a supplied <code>test</code>.toString()</p>
+<p>If the error is caught,
+the returned future completes with the result of calling <code>handleError</code>
+with the error and stack trace.
+This result must be a value of the same type that this future
+could otherwise complete with.
+For example, if this future cannot complete with <code>null</code>,
+then <code>handleError</code> also cannot return <code>null</code>.
+Example:</p>
+<pre class="language-dart"><code class="language-dart">Future&lt;T&gt; retryOperation&lt;T&gt;(Future&lt;T&gt; operation(), T onFailure()) =&gt;
+    operation().onError&lt;RetryException&gt;((e, s) {
+      if (e.canRetry) {
+        return retryOperation(operation, onFailure);
+      }
+      return onFailure();
+    });
+</code></pre>
+<p>If <code>handleError</code> throws, the returned future completes
+with the thrown error and stack trace,
+except that if it throws the <em>same</em> error object again,
+then it is considered a "rethrow"
+and the original stack trace is retained.
+This can be used as an alternative to skipping the
+error in <code>test</code>.
+Example:</p>
+<pre class="language-dart"><code class="language-dart">// Unwraps an exceptions cause, if it has one.
+someFuture.onError&lt;SomeException&gt;((e, _) {
+  throw e.cause ?? e;
+});
+// vs.
+someFuture.onError&lt;SomeException&gt;((e, _) {
+  throw e.cause!;
+}, test: (e) =&gt; e.cause != null);
+</code></pre>
+<p>If the error is not caught, the returned future
+completes with the same result, value or error,
+as this future.</p>
+<p>This method is effectively a more precisely typed version
+of <a href="../../dart-async/Future/catchError.html">Future.catchError</a>.
+It makes it easy to catch specific error types,
+and requires a correctly typed error handler function,
+rather than just <a href="../../dart-core/Function-class.html">Function</a>.
+Because of this, the error handlers must accept
+the stack trace argument.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;T&gt; onError&lt;E extends Object&gt;(
+  FutureOr&lt;T&gt; handleError(E error, StackTrace stackTrace), {
+  bool test(E error)?,
+}) {
+  FutureOr&lt;T&gt; onError(Object error, StackTrace stackTrace) {
+    if (error is! E || test != null &amp;&amp; !test(error)) {
+      &#47;&#47; Counts as rethrow, preserves stack trace.
+      throw error;
+    }
+    return handleError(error, stackTrace);
+  }
+
+  if (this is _Future&lt;Object?&gt;) {
+    &#47;&#47; Internal method working like `catchError`,
+    &#47;&#47; but allows specifying a different result future type.
+    return unsafeCast&lt;_Future&lt;T&gt;&gt;(this)._safeOnError&lt;T&gt;(onError);
+  }
+
+  return this.then&lt;T&gt;((T value) =&gt; value, onError: onError);
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-async/index.html">dart:async</a></li>
+    <li><a href="../../dart-async/FutureExtensions.html">FutureExtensions<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
+    <li class="self-crumb">onError&lt;<wbr><span class="type-parameter">E extends Object</span>&gt; method</li>
+</ol>
+
+    <h5>FutureExtensions extension on <a href="../../dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right"><ol>
+
+
+
+    
+
+    
+
+        <li class="section-title"><a href="/gen-dartdocs/dart-async/FutureExtensions.html#instance-methods">Methods</a></li>
+          <li><a href="/gen-dartdocs/dart-async/FutureExtensions/ignore.html">ignore</a></li>
+          <li><a href="/gen-dartdocs/dart-async/FutureExtensions/onError.html">onError</a></li>
+
+
+    
+
+
+</ol>
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    Dart
+      3.7.1
+  </span>
+  <span class="glue-footer">
+  <span class="no-break">
+    | <a href="https://dart.dev/terms" title="Terms of use" target="_blank">Terms<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy"
+      class="no-automatic-external" target="_blank">Privacy<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://dart.dev/security" title="Security philosophy and practices" target="_blank">Security<sup>&#127760;</sup></a>
+  </span>
+
+  <div class="copyright" style="font-size: 0.9em; color: darkgrey; margin-top: 0.5em;">
+    Except as otherwise noted, this site is licensed under a
+    <a style="color: darkgrey;" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      Creative Commons Attribution 4.0 International License<sup>&#127760;</sup></a>
+    and code samples are licensed under the
+    <a style="color: darkgrey;" href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external" target="_blank">
+      3-Clause BSD License<sup>&#127760;</sup></a>
+  </div>
+</span>
+
+</footer>
+
+
+
+
+<button aria-hidden="true" class="glue-footer__link glue-cookie-notification-bar-control">
+  Cookies management controls
+</button>
+
+
+</body>
+</html>
+

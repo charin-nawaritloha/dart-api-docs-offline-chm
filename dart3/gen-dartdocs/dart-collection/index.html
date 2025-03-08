@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="dart:collection library API docs, for the Dart programming language.">
+  <title>dart:collection library - Dart API</title>
+  
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../static-assets/github.css">
+  <link rel="stylesheet" href="../static-assets/styles.css">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">Dart</a></li>
+    <li class="self-crumb">dart:collection</li>
+  </ol>
+  <div class="self-name">dart:collection</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar=""
+    data-below-sidebar="dart-collection&#47;dart-collection-library-sidebar.html">
+  
+    <div>
+      
+  <div id="external-links" class="btn-group"><a title="View source code" class="source-link" href="https://github.com/dart-lang/sdk/blob/dcddfaba8d0a77a30afceae5958c2d20fa365c71/sdk/lib/collection/collection.dart#L55" target="_blank"><span class="material-symbols-outlined">description</span><sup>&#127760;</sup></a></div>
+
+      <h1>
+        <span class="kind-library">dart:collection</span>
+        library 
+ 
+
+      </h1>
+    </div>
+
+    
+<section class="desc markdown">
+  <p>Classes and utilities that supplement the collection support in dart:core.</p>
+<p>To use this library in your code:</p>
+<pre class="language-dart"><code class="language-dart">import 'dart:collection';
+</code></pre>
+<h2 id="map">Map</h2>
+<p>A finite mapping from unique keys to their associated values.
+Allows efficient lookup of the value associated with a key, if any,
+and iterating through the individual keys and values of the map.
+The <a href="../dart-core/Map-class.html">Map</a> interface has a number of implementations, including the following:</p>
+<ul>
+<li><a href="../dart-collection/HashMap-class.html">HashMap</a> is unordered, the order of iteration is not guaranteed.</li>
+<li><a href="../dart-collection/LinkedHashMap-class.html">LinkedHashMap</a> iterates in key insertion order.</li>
+<li><a href="../dart-collection/SplayTreeMap-class.html">SplayTreeMap</a> iterates the keys in sorted order.</li>
+<li><a href="../dart-collection/UnmodifiableMapView-class.html">UnmodifiableMapView</a> is a wrapper, an unmodifiable <a href="../dart-core/Map-class.html">Map</a> view of another
+<code>Map</code>.</li>
+</ul>
+<h2 id="set">Set</h2>
+<p>A collection of objects in which each object can occur only once.
+The <a href="../dart-core/Set-class.html">Set</a> interface has a number of implementations, including the following:</p>
+<ul>
+<li><a href="../dart-collection/HashSet-class.html">HashSet</a> does not guarantee the order of the objects in the iterations.</li>
+<li><a href="../dart-collection/LinkedHashSet-class.html">LinkedHashSet</a> iterates the objects in insertion order.</li>
+<li><a href="../dart-collection/SplayTreeSet-class.html">SplayTreeSet</a> iterates the objects in sorted order.</li>
+<li><a href="../dart-collection/UnmodifiableSetView-class.html">UnmodifiableSetView</a> is a wrapper, an unmodifiable <a href="../dart-core/Set-class.html">Set</a> view of another
+<code>Set</code>.</li>
+</ul>
+<h2 id="queue">Queue</h2>
+<p>A queue is a sequence of elements that is intended to be modified,
+by adding or removing elements, only at its ends.
+Dart queues are <em>double ended</em> queues, which means that they can be
+accessed equally from either end, and can therefore be used
+to implement both stack and queue behavior.</p>
+<ul>
+<li><a href="../dart-collection/Queue-class.html">Queue</a> is the general interface for queues.</li>
+<li><a href="../dart-collection/ListQueue-class.html">ListQueue</a> is a list-based queue. Default implementation for <a href="../dart-collection/Queue-class.html">Queue</a>.</li>
+<li><a href="../dart-collection/DoubleLinkedQueue-class.html">DoubleLinkedQueue</a> is a queue implementation based on a double-linked
+list.</li>
+</ul>
+<h2 id="list">List</h2>
+<p>An indexable sequence of objects. Objects can be accessed using their
+position, index, in the sequence. <a href="../dart-core/List-class.html">List</a> is also called an "array" in other
+programming languages.</p>
+<ul>
+<li><a href="../dart-collection/UnmodifiableListView-class.html">UnmodifiableListView</a> is a wrapper, an unmodifiable <a href="../dart-core/List-class.html">List</a> view of
+another <code>List</code>.</li>
+</ul>
+<h2 id="linkedlist">LinkedList</h2>
+<p><a href="../dart-collection/LinkedList-class.html">LinkedList</a> is a specialized double-linked list of elements that extends
+<a href="../dart-collection/LinkedListEntry-class.html">LinkedListEntry</a>. Each element knows its own place in the linked list,
+as well as which list it is in.</p>
+</section>
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+      <dl>
+          <dt id="DoubleLinkedQueue">
+  <span class="name "><a href="../dart-collection/DoubleLinkedQueue-class.html">DoubleLinkedQueue</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-collection/Queue-class.html">Queue</a> implementation based on a double-linked list.
+</dd>
+
+          <dt id="DoubleLinkedQueueEntry">
+  <span class="name "><a href="../dart-collection/DoubleLinkedQueueEntry-class.html">DoubleLinkedQueueEntry</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An entry in a doubly linked list.
+</dd>
+
+          <dt id="HashMap">
+  <span class="name "><a href="../dart-collection/HashMap-class.html">HashMap</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A hash-table based implementation of <a href="../dart-core/Map-class.html">Map</a>.
+</dd>
+
+          <dt id="HashSet">
+  <span class="name "><a href="../dart-collection/HashSet-class.html">HashSet</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An unordered hash-table based <a href="../dart-core/Set-class.html">Set</a> implementation.
+</dd>
+
+          <dt id="HasNextIterator">
+  <span class="name deprecated"><a class="deprecated" href="../dart-collection/HasNextIterator-class.html">HasNextIterator</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Wrapper for <a href="../dart-core/Iterator-class.html">Iterator</a> providing the pre-Dart 1.0 iterator interface.
+</dd>
+
+          <dt id="LinkedHashMap">
+  <span class="name "><a href="../dart-collection/LinkedHashMap-class.html">LinkedHashMap</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An insertion-ordered <a href="../dart-core/Map-class.html">Map</a> with expected constant-time lookup.
+</dd>
+
+          <dt id="LinkedHashSet">
+  <span class="name "><a href="../dart-collection/LinkedHashSet-class.html">LinkedHashSet</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-collection/LinkedHashSet-class.html">LinkedHashSet</a> is a hash-table based <a href="../dart-core/Set-class.html">Set</a> implementation.
+</dd>
+
+          <dt id="LinkedList">
+  <span class="name "><a href="../dart-collection/LinkedList-class.html">LinkedList</a><span class="signature">&lt;<wbr><span class="type-parameter">E extends <a href="../dart-collection/LinkedListEntry-class.html">LinkedListEntry</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A specialized double-linked list of elements that extends <a href="../dart-collection/LinkedListEntry-class.html">LinkedListEntry</a>.
+</dd>
+
+          <dt id="LinkedListEntry">
+  <span class="name "><a href="../dart-collection/LinkedListEntry-class.html">LinkedListEntry</a><span class="signature">&lt;<wbr><span class="type-parameter">E extends <a href="../dart-collection/LinkedListEntry-class.html">LinkedListEntry</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An object that can be an element in a <a href="../dart-collection/LinkedList-class.html">LinkedList</a>.
+</dd>
+
+          <dt id="ListBase">
+  <span class="name "><a href="../dart-collection/ListBase-class.html">ListBase</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Abstract implementation of a list.
+</dd>
+
+          <dt id="ListQueue">
+  <span class="name "><a href="../dart-collection/ListQueue-class.html">ListQueue</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  List based <a href="../dart-collection/Queue-class.html">Queue</a>.
+</dd>
+
+          <dt id="MapBase">
+  <span class="name "><a href="../dart-collection/MapBase-class.html">MapBase</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Base class for implementing a <a href="../dart-core/Map-class.html">Map</a>.
+</dd>
+
+          <dt id="MapView">
+  <span class="name "><a href="../dart-collection/MapView-class.html">MapView</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Wrapper around a class that implements <a href="../dart-core/Map-class.html">Map</a> that only exposes <code>Map</code>
+members.
+</dd>
+
+          <dt id="Queue">
+  <span class="name "><a href="../dart-collection/Queue-class.html">Queue</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-collection/Queue-class.html">Queue</a> is a collection that can be manipulated at both ends. One
+can iterate over the elements of a queue through <a href="../dart-core/Iterable/forEach.html">forEach</a> or with
+an <a href="../dart-core/Iterator-class.html">Iterator</a>.
+</dd>
+
+          <dt id="SetBase">
+  <span class="name "><a href="../dart-collection/SetBase-class.html">SetBase</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Base implementation of <a href="../dart-core/Set-class.html">Set</a>.
+</dd>
+
+          <dt id="SplayTreeMap">
+  <span class="name "><a href="../dart-collection/SplayTreeMap-class.html">SplayTreeMap</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-core/Map-class.html">Map</a> of objects that can be ordered relative to each other.
+</dd>
+
+          <dt id="SplayTreeSet">
+  <span class="name "><a href="../dart-collection/SplayTreeSet-class.html">SplayTreeSet</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-core/Set-class.html">Set</a> of objects that can be ordered relative to each other.
+</dd>
+
+          <dt id="UnmodifiableListView">
+  <span class="name "><a href="../dart-collection/UnmodifiableListView-class.html">UnmodifiableListView</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An unmodifiable <a href="../dart-core/List-class.html">List</a> view of another List.
+</dd>
+
+          <dt id="UnmodifiableMapBase">
+  <span class="name "><a href="../dart-collection/UnmodifiableMapBase-class.html">UnmodifiableMapBase</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Basic implementation of an unmodifiable <a href="../dart-core/Map-class.html">Map</a>.
+</dd>
+
+          <dt id="UnmodifiableMapView">
+  <span class="name "><a href="../dart-collection/UnmodifiableMapView-class.html">UnmodifiableMapView</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  View of a <a href="../dart-core/Map-class.html">Map</a> that disallow modifying the map.
+</dd>
+
+          <dt id="UnmodifiableSetView">
+  <span class="name "><a href="../dart-collection/UnmodifiableSetView-class.html">UnmodifiableSetView</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An unmodifiable <a href="../dart-core/Set-class.html">Set</a> view of another <a href="../dart-core/Set-class.html">Set</a>.
+</dd>
+
+      </dl>
+    </section>
+
+
+
+
+    <section class="summary offset-anchor" id="extensions">
+      <h2>Extensions</h2>
+      <dl>
+          <dt id="IterableExtensions">
+  <span class="name "><a href="../dart-collection/IterableExtensions.html">IterableExtensions</a></span>
+  on <a href="../dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>
+  
+
+</dt>
+<dd>
+  Operations on iterables.
+</dd>
+
+          <dt id="NullableIterableExtensions">
+  <span class="name "><a href="../dart-collection/NullableIterableExtensions.html">NullableIterableExtensions</a></span>
+  on <a href="../dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T?</span>&gt;</span>
+  
+
+</dt>
+<dd>
+  Operations on iterables with nullable elements.
+</dd>
+
+      </dl>
+    </section>
+
+
+
+
+    <section class="summary offset-anchor" id="typedefs">
+      <h2>Typedefs</h2>
+      <dl>
+          
+  <dt id="IterableBase" class="">
+  <span class="name"><a href="../dart-collection/IterableBase.html">IterableBase</a></span>&lt;<wbr><span class="type-parameter">E</span>&gt;
+    = <a href="../dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Base class for implementing <a href="../dart-core/Iterable-class.html">Iterable</a>.
+  
+
+</dd>
+
+
+          
+  <dt id="IterableMixin" class="">
+  <span class="name"><a href="../dart-collection/IterableMixin.html">IterableMixin</a></span>&lt;<wbr><span class="type-parameter">E</span>&gt;
+    = <a href="../dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span>
+  </span>
+  
+
+</dt>
+<dd>
+  This <a href="../dart-core/Iterable-class.html">Iterable</a> mixin implements all <a href="../dart-core/Iterable-class.html">Iterable</a> members except <code>iterator</code>.
+  
+
+</dd>
+
+
+          
+  <dt id="ListMixin" class="">
+  <span class="name"><a href="../dart-collection/ListMixin.html">ListMixin</a></span>&lt;<wbr><span class="type-parameter">E</span>&gt;
+    = <a href="../dart-collection/ListBase-class.html">ListBase</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Base mixin implementation of a <a href="../dart-core/List-class.html">List</a> class.
+  
+
+</dd>
+
+
+          
+  <dt id="MapMixin" class="">
+  <span class="name"><a href="../dart-collection/MapMixin.html">MapMixin</a></span>&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;
+    = <a href="../dart-collection/MapBase-class.html">MapBase</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Mixin implementing a <a href="../dart-core/Map-class.html">Map</a>.
+  
+
+</dd>
+
+
+          
+  <dt id="SetMixin" class="">
+  <span class="name"><a href="../dart-collection/SetMixin.html">SetMixin</a></span>&lt;<wbr><span class="type-parameter">E</span>&gt;
+    = <a href="../dart-collection/SetBase-class.html">SetBase</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Mixin implementation of <a href="../dart-core/Set-class.html">Set</a>.
+  
+
+</dd>
+
+
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">Dart</a></li>
+    <li class="self-crumb">dart:collection</li>
+</ol>
+
+    <h5><span class="package-name">Dart</span> <span class="package-kind">SDK</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li class="section-subtitle">Core</li>
+        <li class="section-subitem"><a href="../dart-async/index.html">dart:async</a></li>
+        <li class="section-subitem"><a href="../dart-collection/index.html">dart:collection</a></li>
+        <li class="section-subitem"><a href="../dart-convert/index.html">dart:convert</a></li>
+        <li class="section-subitem"><a href="../dart-core/index.html">dart:core</a></li>
+        <li class="section-subitem"><a href="../dart-developer/index.html">dart:developer</a></li>
+        <li class="section-subitem"><a href="../dart-math/index.html">dart:math</a></li>
+        <li class="section-subitem"><a href="../dart-typed_data/index.html">dart:typed_data</a></li>
+      <li class="section-subtitle">VM</li>
+        <li class="section-subitem"><a href="../dart-ffi/index.html">dart:ffi</a></li>
+        <li class="section-subitem"><a href="../dart-io/index.html">dart:io</a></li>
+        <li class="section-subitem"><a href="../dart-isolate/index.html">dart:isolate</a></li>
+        <li class="section-subitem"><a href="../dart-mirrors/index.html">dart:mirrors</a></li>
+      <li class="section-subtitle">Web</li>
+        <li class="section-subitem">
+          <a href="https:&#47;&#47;pub.dev&#47;documentation&#47;web&#47;latest&#47;" target="_blank" target="_blank">
+            package:web
+            <span class="material-symbols-outlined">open_in_new</span>
+          <sup>&#127760;</sup></a>
+        </li>
+        <li class="section-subitem"><a href="../dart-js_interop/index.html">dart:js_interop</a></li>
+        <li class="section-subitem"><a href="../dart-js_interop_unsafe/index.html">dart:js_interop_unsafe</a></li>
+      <li class="section-subtitle">Web (Legacy)</li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-html/index.html">dart:html</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-indexed_db/index.html">dart:indexed_db</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-js/index.html">dart:js</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-js_util/index.html">dart:js_util</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-svg/index.html">dart:svg</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-web_audio/index.html">dart:web_audio</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-web_gl/index.html">dart:web_gl</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right"><ol>
+      <li class="section-title"><a href="/gen-dartdocs/dart-collection#classes/index.html">Classes</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/DoubleLinkedQueue-class.html">DoubleLinkedQueue</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/DoubleLinkedQueueEntry-class.html">DoubleLinkedQueueEntry</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/HashMap-class.html">HashMap</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/HashSet-class.html">HashSet</a></li>
+        <li><a class="deprecated" href="/gen-dartdocs/dart-collection/HasNextIterator-class.html">HasNextIterator</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/LinkedHashMap-class.html">LinkedHashMap</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/LinkedHashSet-class.html">LinkedHashSet</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/LinkedList-class.html">LinkedList</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/LinkedListEntry-class.html">LinkedListEntry</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/ListBase-class.html">ListBase</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/ListQueue-class.html">ListQueue</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/MapBase-class.html">MapBase</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/MapView-class.html">MapView</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/Queue-class.html">Queue</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/SetBase-class.html">SetBase</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/SplayTreeMap-class.html">SplayTreeMap</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/SplayTreeSet-class.html">SplayTreeSet</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/UnmodifiableListView-class.html">UnmodifiableListView</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/UnmodifiableMapBase-class.html">UnmodifiableMapBase</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/UnmodifiableMapView-class.html">UnmodifiableMapView</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/UnmodifiableSetView-class.html">UnmodifiableSetView</a></li>
+
+
+
+
+
+
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-collection#typedefs/index.html">Typedefs</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/IterableBase.html">IterableBase</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/IterableMixin.html">IterableMixin</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/ListMixin.html">ListMixin</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/MapMixin.html">MapMixin</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/SetMixin.html">SetMixin</a></li>
+
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-collection#extensions/index.html">Extensions</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/IterableExtensions.html">IterableExtensions</a></li>
+        <li><a href="/gen-dartdocs/dart-collection/NullableIterableExtensions.html">NullableIterableExtensions</a></li>
+</ol>
+</div><!--/sidebar-offcanvas-right-->
+</main>
+<footer>
+  <span class="no-break">
+    Dart
+      3.7.1
+  </span>
+  <span class="glue-footer">
+  <span class="no-break">
+    | <a href="https://dart.dev/terms" title="Terms of use" target="_blank">Terms<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy"
+      class="no-automatic-external" target="_blank">Privacy<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://dart.dev/security" title="Security philosophy and practices" target="_blank">Security<sup>&#127760;</sup></a>
+  </span>
+
+  <div class="copyright" style="font-size: 0.9em; color: darkgrey; margin-top: 0.5em;">
+    Except as otherwise noted, this site is licensed under a
+    <a style="color: darkgrey;" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      Creative Commons Attribution 4.0 International License<sup>&#127760;</sup></a>
+    and code samples are licensed under the
+    <a style="color: darkgrey;" href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external" target="_blank">
+      3-Clause BSD License<sup>&#127760;</sup></a>
+  </div>
+</span>
+
+</footer>
+
+
+
+
+<button aria-hidden="true" class="glue-footer__link glue-cookie-notification-bar-control">
+  Cookies management controls
+</button>
+
+
+</body>
+</html>
+

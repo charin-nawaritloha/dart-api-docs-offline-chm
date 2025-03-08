@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the lockSync method from the RandomAccessFile class, for the Dart programming language.">
+  <title>lockSync method - RandomAccessFile class - dart:io library - Dart API</title>
+  
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../../static-assets/github.css">
+  <link rel="stylesheet" href="../../static-assets/styles.css">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-io/index.html">dart:io</a></li>
+    <li><a href="../../dart-io/RandomAccessFile-class.html">RandomAccessFile</a></li>
+    <li class="self-crumb">lockSync abstract method</li>
+  </ol>
+  <div class="self-name">lockSync</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="dart-io&#47;RandomAccessFile-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+  <div id="external-links" class="btn-group"><a title="View source code" class="source-link" href="https://github.com/dart-lang/sdk/blob/dcddfaba8d0a77a30afceae5958c2d20fa365c71/sdk/lib/io/file.dart#L999" target="_blank"><span class="material-symbols-outlined">description</span><sup>&#127760;</sup></a></div>
+<h1><span class="kind-method">lockSync</span> abstract method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype">void</span>
+<span class="name ">lockSync</span>(<wbr>[<ol class="parameter-list single-line"> <li><span class="parameter" id="lockSync-param-mode"><span class="type-annotation"><a href="../../dart-io/FileLock-class.html">FileLock</a></span> <span class="parameter-name">mode</span> = <span class="default-value">FileLock.exclusive</span>, </span></li>
+<li><span class="parameter" id="lockSync-param-start"><span class="type-annotation"><a href="../../dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span> = <span class="default-value">0</span>, </span></li>
+<li><span class="parameter" id="lockSync-param-end"><span class="type-annotation"><a href="../../dart-core/int-class.html">int</a></span> <span class="parameter-name">end</span> = <span class="default-value">-1</span></span></li>
+</ol>])
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Synchronously locks the file or part of the file.</p>
+<p>By default an exclusive lock will be obtained, but that can be overridden
+by the <code>mode</code> argument.</p>
+<p>Locks the byte range from <code>start</code> to <code>end</code> of the file ,with the
+byte at position <code>end</code> not included. If no arguments are
+specified, the full file is locked, If only <code>start</code> is specified
+the file is locked from byte position <code>start</code> to the end of the
+file, no matter how large it grows. It is possible to specify an
+explicit value of <code>end</code> which is past the current length of the file.</p>
+<p>To obtain an exclusive lock on a file it must be opened for writing.</p>
+<p>If <code>mode</code> is <a href="../../dart-io/FileLock/exclusive-constant.html">FileLock.exclusive</a> or <a href="../../dart-io/FileLock/shared-constant.html">FileLock.shared</a>, an exception is
+thrown if the lock cannot be obtained. If <code>mode</code> is
+<a href="../../dart-io/FileLock/blockingExclusive-constant.html">FileLock.blockingExclusive</a> or <a href="../../dart-io/FileLock/blockingShared-constant.html">FileLock.blockingShared</a>, the
+call returns only after the lock has been obtained.</p>
+<p><em>NOTE</em> file locking does have slight differences in behavior across
+platforms:</p>
+<p>On Linux and OS X this uses advisory locks, which have the
+surprising semantics that all locks associated with a given file
+are removed when <em>any</em> file descriptor for that file is closed by
+the process. Note that this does not actually lock the file for
+access. Also note that advisory locks are on a process
+level. This means that several isolates in the same process can
+obtain an exclusive lock on the same file.</p>
+<p>On Windows the regions used for lock and unlock needs to match. If that
+is not the case unlocking will result in the OS error "The segment is
+already unlocked".</p>
+<p>On Windows, locking a file associates the lock with the specific file
+handle used to acquire the lock. If the same file is opened again with a
+different handle (even within the same process), attempts to write to the
+locked region using the new handle will fail. To ensure successful writes
+after locking, use the same <a href="../../dart-io/RandomAccessFile-class.html">RandomAccessFile</a> object that acquired the
+lock for subsequent write operations.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">void lockSync([
+  FileLock mode = FileLock.exclusive,
+  int start = 0,
+  int end = -1,
+]);</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-io/index.html">dart:io</a></li>
+    <li><a href="../../dart-io/RandomAccessFile-class.html">RandomAccessFile</a></li>
+    <li class="self-crumb">lockSync abstract method</li>
+</ol>
+
+    <h5>RandomAccessFile class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right"><ol>
+
+
+
+    
+        <li class="section-title">
+          <a href="/gen-dartdocs/dart-io/RandomAccessFile-class.html#instance-properties">Properties</a>
+        </li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/hashCode.html">hashCode</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/path.html">path</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/runtimeType.html">runtimeType</a>
+</li>
+
+        <li class="section-title"><a href="/gen-dartdocs/dart-io/RandomAccessFile-class.html#instance-methods">Methods</a></li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/close.html">close</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/closeSync.html">closeSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/flush.html">flush</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/flushSync.html">flushSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/length.html">length</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/lengthSync.html">lengthSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/lock.html">lock</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/lockSync.html">lockSync</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/noSuchMethod.html">noSuchMethod</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/position.html">position</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/positionSync.html">positionSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/read.html">read</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/readByte.html">readByte</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/readByteSync.html">readByteSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/readInto.html">readInto</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/readIntoSync.html">readIntoSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/readSync.html">readSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/setPosition.html">setPosition</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/setPositionSync.html">setPositionSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/toString.html">toString</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/truncate.html">truncate</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/truncateSync.html">truncateSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/unlock.html">unlock</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/unlockSync.html">unlockSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/writeByte.html">writeByte</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/writeByteSync.html">writeByteSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/writeFrom.html">writeFrom</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/writeFromSync.html">writeFromSync</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/writeString.html">writeString</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-io/RandomAccessFile/writeStringSync.html">writeStringSync</a>
+</li>
+
+        <li class="section-title inherited"><a href="/gen-dartdocs/dart-io/RandomAccessFile-class.html#operators">Operators</a></li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/operator_equals.html">operator ==</a>
+</li>
+
+    
+
+    
+
+
+</ol>
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    Dart
+      3.7.1
+  </span>
+  <span class="glue-footer">
+  <span class="no-break">
+    | <a href="https://dart.dev/terms" title="Terms of use" target="_blank">Terms<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy"
+      class="no-automatic-external" target="_blank">Privacy<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://dart.dev/security" title="Security philosophy and practices" target="_blank">Security<sup>&#127760;</sup></a>
+  </span>
+
+  <div class="copyright" style="font-size: 0.9em; color: darkgrey; margin-top: 0.5em;">
+    Except as otherwise noted, this site is licensed under a
+    <a style="color: darkgrey;" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      Creative Commons Attribution 4.0 International License<sup>&#127760;</sup></a>
+    and code samples are licensed under the
+    <a style="color: darkgrey;" href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external" target="_blank">
+      3-Clause BSD License<sup>&#127760;</sup></a>
+  </div>
+</span>
+
+</footer>
+
+
+
+
+<button aria-hidden="true" class="glue-footer__link glue-cookie-notification-bar-control">
+  Cookies management controls
+</button>
+
+
+</body>
+</html>
+

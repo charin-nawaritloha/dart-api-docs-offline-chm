@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the JSExport class from the dart:js_interop library, for the Dart programming language.">
+  <title>JSExport class - dart:js_interop library - Dart API</title>
+  
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../static-assets/github.css">
+  <link rel="stylesheet" href="../static-assets/styles.css">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">Dart</a></li>
+    <li><a href="../dart-js_interop/index.html">dart:js_interop</a></li>
+    <li class="self-crumb">JSExport class</li>
+  </ol>
+  <div class="self-name">JSExport</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="dart-js_interop&#47;dart-js_interop-library-sidebar.html"
+    data-below-sidebar="dart-js_interop&#47;JSExport-class-sidebar.html">
+    <div>
+  <div id="external-links" class="btn-group"><a title="View source code" class="source-link" href="https://github.com/dart-lang/sdk/blob/dcddfaba8d0a77a30afceae5958c2d20fa365c71/sdk/lib/js/_js_annotations.dart#L95" target="_blank"><span class="material-symbols-outlined">description</span><sup>&#127760;</sup></a></div>
+<h1><span class="kind-class">JSExport</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Annotation to allow Dart classes to be wrapped with a JS object using
+<code>dart:js_interop</code>'s <code>createJSInteropWrapper</code>.</p>
+<p>When an instance of a class annotated with this annotation is passed to
+<code>createJSInteropWrapper</code>, the method returns a JS object that contains
+a property for each of the class' instance members. When called, these
+properties forward to the instance's corresponding members.</p>
+<p>You can either annotate specific instance members to only wrap those members
+or you can annotate the entire class, which will include all of its instance
+members.</p>
+<p>By default, the property will have the same name as the corresponding
+instance member. You can change the property name of a member in the JS
+object by providing a <a href="../dart-js_interop/JSExport/name.html">name</a> in the @<a href="../dart-js_interop/JSExport-class.html">JSExport</a> annotation on the member,
+like so:</p>
+<pre class="language-dart"><code>class Export {
+  @JSExport('printHelloWorld')
+  void printMessage() =&gt; print('Hello World!');
+}
+</code></pre>
+<p>which will then set the property 'printHelloWorld' in the JS object to
+forward to <code>printMessage</code>.</p>
+<p>Classes and mixins in the hierarchy of the annotated class are included only
+if they are annotated as well or specific members in them are annotated. If
+a superclass does not have an annotation anywhere, its members are not
+included. If members are overridden, only the overriding member will
+be wrapped as long as it or its class has this annotation.</p>
+<p>Only concrete instance members can and will be wrapped, and it's an error to
+annotate other members with this annotation.</p>
+</section>
+
+
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="JSExport" class="callable">
+          <span class="name"><a href="../dart-js_interop/JSExport/JSExport.html">JSExport</a></span><span class="signature">([<span class="parameter" id="-param-name"><span class="type-annotation"><a href="../dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span> = <span class="default-value">&#39;&#39;</span></span>])</span>
+        </dt>
+        <dd>
+          
+            <div class="constructor-modifier features">const</div>
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="../dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="../dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="name" class="property">
+  <span class="name"><a href="../dart-js_interop/JSExport/name.html">name</a></span>
+  <span class="signature">&#8594; <a href="../dart-core/String-class.html">String</a></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="../dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="../dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="../dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="../dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="../dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="../dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="../dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="../dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">Dart</a></li>
+    <li><a href="../dart-js_interop/index.html">dart:js_interop</a></li>
+    <li class="self-crumb">JSExport class</li>
+</ol>
+
+    <h5>dart:js_interop library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right"><ol>
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-js_interop/JSExport-class.html#constructors">Constructors</a></li>
+        <li><a href="/gen-dartdocs/dart-js_interop/JSExport/JSExport.html">JSExport</a></li>
+
+
+    
+        <li class="section-title">
+          <a href="/gen-dartdocs/dart-js_interop/JSExport-class.html#instance-properties">Properties</a>
+        </li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/hashCode.html">hashCode</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-js_interop/JSExport/name.html">name</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/runtimeType.html">runtimeType</a>
+</li>
+
+        <li class="section-title inherited"><a href="/gen-dartdocs/dart-js_interop/JSExport-class.html#instance-methods">Methods</a></li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/noSuchMethod.html">noSuchMethod</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/toString.html">toString</a>
+</li>
+
+        <li class="section-title inherited"><a href="/gen-dartdocs/dart-js_interop/JSExport-class.html#operators">Operators</a></li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/operator_equals.html">operator ==</a>
+</li>
+
+    
+
+    
+
+
+</ol>
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    Dart
+      3.7.1
+  </span>
+  <span class="glue-footer">
+  <span class="no-break">
+    | <a href="https://dart.dev/terms" title="Terms of use" target="_blank">Terms<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy"
+      class="no-automatic-external" target="_blank">Privacy<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://dart.dev/security" title="Security philosophy and practices" target="_blank">Security<sup>&#127760;</sup></a>
+  </span>
+
+  <div class="copyright" style="font-size: 0.9em; color: darkgrey; margin-top: 0.5em;">
+    Except as otherwise noted, this site is licensed under a
+    <a style="color: darkgrey;" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      Creative Commons Attribution 4.0 International License<sup>&#127760;</sup></a>
+    and code samples are licensed under the
+    <a style="color: darkgrey;" href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external" target="_blank">
+      3-Clause BSD License<sup>&#127760;</sup></a>
+  </div>
+</span>
+
+</footer>
+
+
+
+
+<button aria-hidden="true" class="glue-footer__link glue-cookie-notification-bar-control">
+  Cookies management controls
+</button>
+
+
+</body>
+</html>
+

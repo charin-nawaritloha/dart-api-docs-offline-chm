@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Array.variableMulti constructor from Class Array from the dart:ffi library, for the Dart programming language.">
+  <title>Array.variableMulti constructor - Array - dart:ffi library - Dart API</title>
+  
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../../static-assets/github.css">
+  <link rel="stylesheet" href="../../static-assets/styles.css">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-ffi/index.html">dart:ffi</a></li>
+    <li><a href="../../dart-ffi/Array-class.html">Array<span class="signature">&lt;<wbr><span class="type-parameter">T extends NativeType</span>&gt;</span></a></li>
+    <li class="self-crumb">Array.variableMulti const constructor</li>
+  </ol>
+  <div class="self-name">Array.variableMulti</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="dart-ffi&#47;Array-class-sidebar.html"
+      data-below-sidebar="">
+      <div>
+  <div id="external-links" class="btn-group"><a title="View source code" class="source-link" href="https://github.com/dart-lang/sdk/blob/dcddfaba8d0a77a30afceae5958c2d20fa365c71/sdk/lib/ffi/ffi.dart#L271" target="_blank"><span class="material-symbols-outlined">description</span><sup>&#127760;</sup></a></div>
+<h1><span class="kind-constructor">Array&lt;<wbr><span class="type-parameter">T extends NativeType</span>&gt;.variableMulti</span> constructor 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+  <div>
+    <ol class="annotation-list">
+        <li>@Since(&#39;3.6&#39;)</li>
+    </ol>
+  </div>const
+      <span class="name ">Array&lt;<wbr><span class="type-parameter">T extends NativeType</span>&gt;.variableMulti</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="variableMulti-param-dimensions"><span class="type-annotation"><a href="../../dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">dimensions</span>, {</span></li>
+<li><span class="parameter" id="variableMulti-param-variableDimension"><span>@Since(&#39;3.7&#39;)</span> <span class="type-annotation"><a href="../../dart-core/int-class.html">int</a></span> <span class="parameter-name">variableDimension</span>, </span></li>
+</ol>})
+    </section>
+    
+<section class="desc markdown">
+  <p>Annotation to a variable length <a href="../../dart-ffi/Array-class.html">Array</a> in <a href="../../dart-ffi/Struct-class.html">Struct</a>s.</p>
+<pre class="language-dart"><code class="language-dart">final class MyStruct extends Struct {
+  @Array.variableMulti([2, 2])
+  external Array&lt;Array&lt;Array&lt;Uint8&gt;&gt;&gt; threeDimensionalInlineArray;
+}
+
+final class MyStruct2 extends Struct {
+  @Array.variableMulti(variableDimension: 1, [2, 2, 2])
+  external Array&lt;Array&lt;Array&lt;Array&lt;Uint8&gt;&gt;&gt;&gt; fourDimensionalInlineArray;
+}
+
+final class MyStruct3 extends Struct {
+  @Array.variableMulti([2, 2, 2, 2, 2, 2, 2])
+  external Array&lt;Array&lt;Array&lt;Array&lt;Array&lt;Array&lt;Array&lt;Array&lt;Uint8&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; eightDimensionalInlineArray;
+}
+</code></pre>
+<p>The variable length is always the outermost dimension of the array.</p>
+<p><code>variableDimension</code> is the outermost dimension of the variable length
+array (defaults to zero (<code>0</code>)). When <code>variableDimension</code> is set to a value
+greater than zero (<code>0</code>), the last field of the struct is taken into
+account in <a href="../../dart-ffi/sizeOf.html">sizeOf</a> and <a href="../../dart-ffi/AllocatorAlloc/call.html">AllocatorAlloc.call</a>.</p>
+<p>Do not invoke in normal code.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">@Since(&#39;3.6&#39;)
+const factory Array.variableMulti(
+  List&lt;int&gt; dimensions, {
+  @Since(&#39;3.7&#39;) int variableDimension,
+}) = _ArraySize&lt;T&gt;.variableMulti;</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-ffi/index.html">dart:ffi</a></li>
+    <li><a href="../../dart-ffi/Array-class.html">Array<span class="signature">&lt;<wbr><span class="type-parameter">T extends NativeType</span>&gt;</span></a></li>
+    <li class="self-crumb">Array.variableMulti const constructor</li>
+</ol>
+
+    <h5>Array class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-left-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right"><ol>
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-ffi/Array-class.html#constructors">Constructors</a></li>
+        <li><a href="/gen-dartdocs/dart-ffi/Array/Array.html">Array</a></li>
+        <li><a href="/gen-dartdocs/dart-ffi/Array/Array.multi.html">multi</a></li>
+        <li><a href="/gen-dartdocs/dart-ffi/Array/Array.variable.html">variable</a></li>
+        <li><a href="/gen-dartdocs/dart-ffi/Array/Array.variableMulti.html">variableMulti</a></li>
+        <li><a href="/gen-dartdocs/dart-ffi/Array/Array.variableWithVariableDimension.html">variableWithVariableDimension</a></li>
+
+
+    
+        <li class="section-title inherited">
+          <a href="/gen-dartdocs/dart-ffi/Array-class.html#instance-properties">Properties</a>
+        </li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/ArrayAddress/address.html">address</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;T&gt;">(ext)</sup>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/hashCode.html">hashCode</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/runtimeType.html">runtimeType</a>
+</li>
+
+        <li class="section-title inherited"><a href="/gen-dartdocs/dart-ffi/Array-class.html#instance-methods">Methods</a></li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/noSuchMethod.html">noSuchMethod</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/toString.html">toString</a>
+</li>
+
+        <li class="section-title inherited"><a href="/gen-dartdocs/dart-ffi/Array-class.html#operators">Operators</a></li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/operator_equals.html">operator ==</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/AbiSpecificIntegerArray/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;T&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/ArrayArray/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Array&lt;T&gt;&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/BoolArray/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Bool&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/DoubleArray/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Double&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/FloatArray/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Float&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Int8Array/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Int8&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Int16Array/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Int16&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Int32Array/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Int32&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Int64Array/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Int64&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/PointerArray/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Pointer&lt;T&gt;&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/StructArray/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;T&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Uint8Array/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Uint8&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Uint16Array/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Uint16&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Uint32Array/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Uint32&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Uint64Array/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Uint64&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/UnionArray/operator_get.html">operator []</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;T&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/AbiSpecificIntegerArray/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;T&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/ArrayArray/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Array&lt;T&gt;&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/BoolArray/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Bool&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/DoubleArray/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Double&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/FloatArray/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Float&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Int8Array/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Int8&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Int16Array/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Int16&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Int32Array/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Int32&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Int64Array/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Int64&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/PointerArray/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Pointer&lt;T&gt;&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Uint8Array/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Uint8&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Uint16Array/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Uint16&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Uint32Array/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Uint32&gt;">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Uint64Array/operator_put.html">operator []=</a>
+      <sup
+          class="muted"
+          title="Available on Array&lt;Uint64&gt;">(ext)</sup>
+</li>
+
+    
+
+    
+
+
+</ol>
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    Dart
+      3.7.1
+  </span>
+  <span class="glue-footer">
+  <span class="no-break">
+    | <a href="https://dart.dev/terms" title="Terms of use" target="_blank">Terms<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy"
+      class="no-automatic-external" target="_blank">Privacy<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://dart.dev/security" title="Security philosophy and practices" target="_blank">Security<sup>&#127760;</sup></a>
+  </span>
+
+  <div class="copyright" style="font-size: 0.9em; color: darkgrey; margin-top: 0.5em;">
+    Except as otherwise noted, this site is licensed under a
+    <a style="color: darkgrey;" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      Creative Commons Attribution 4.0 International License<sup>&#127760;</sup></a>
+    and code samples are licensed under the
+    <a style="color: darkgrey;" href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external" target="_blank">
+      3-Clause BSD License<sup>&#127760;</sup></a>
+  </div>
+</span>
+
+</footer>
+
+
+
+
+<button aria-hidden="true" class="glue-footer__link glue-cookie-notification-bar-control">
+  Cookies management controls
+</button>
+
+
+</body>
+</html>
+

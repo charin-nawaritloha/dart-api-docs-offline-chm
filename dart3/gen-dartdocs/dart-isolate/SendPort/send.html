@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the send method from the SendPort class, for the Dart programming language.">
+  <title>send method - SendPort class - dart:isolate library - Dart API</title>
+  
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../../static-assets/github.css">
+  <link rel="stylesheet" href="../../static-assets/styles.css">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-isolate/index.html">dart:isolate</a></li>
+    <li><a href="../../dart-isolate/SendPort-class.html">SendPort</a></li>
+    <li class="self-crumb">send abstract method</li>
+  </ol>
+  <div class="self-name">send</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="dart-isolate&#47;SendPort-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+  <div id="external-links" class="btn-group"><a title="View source code" class="source-link" href="https://github.com/dart-lang/sdk/blob/dcddfaba8d0a77a30afceae5958c2d20fa365c71/sdk/lib/isolate/isolate.dart#L906" target="_blank"><span class="material-symbols-outlined">description</span><sup>&#127760;</sup></a></div>
+<h1><span class="kind-method">send</span> abstract method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype">void</span>
+<span class="name ">send</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="send-param-message"><span class="type-annotation"><a href="../../dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">message</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Sends an asynchronous <code>message</code> through this send port, to its
+corresponding <a href="../../dart-isolate/ReceivePort-class.html">ReceivePort</a>.</p>
+<p>If the sending and receiving isolates do not share the same code
+(an isolate created using <a href="../../dart-isolate/Isolate/spawnUri.html">Isolate.spawnUri</a> does not share the code
+of the isolate that spawned it), the transitive object graph of <code>message</code>
+can <strong>only</strong> contain the following kinds of objects:</p>
+<ul>
+<li><code>null</code></li>
+<li><code>true</code> and <code>false</code></li>
+<li>Instances of <a href="../../dart-core/int-class.html">int</a>, <a href="../../dart-core/double-class.html">double</a>, <a href="../../dart-core/String-class.html">String</a></li>
+<li>Instances created through list, map and set literals</li>
+<li>Instances created by constructors of:
+<ul>
+<li><a href="../../dart-core/List-class.html">List</a>, <a href="../../dart-core/Map-class.html">Map</a>, <a href="../../dart-collection/LinkedHashMap-class.html">LinkedHashMap</a>, <a href="../../dart-core/Set-class.html">Set</a> and <a href="../../dart-collection/LinkedHashSet-class.html">LinkedHashSet</a></li>
+<li><a href="../../dart-isolate/TransferableTypedData-class.html">TransferableTypedData</a></li>
+<li><a href="../../dart-isolate/Capability-class.html">Capability</a></li>
+</ul>
+</li>
+<li><a href="../../dart-isolate/SendPort-class.html">SendPort</a> instances from <a href="../../dart-isolate/ReceivePort/sendPort.html">ReceivePort.sendPort</a> or
+<a href="../../dart-isolate/RawReceivePort/sendPort.html">RawReceivePort.sendPort</a> where the receive ports are created
+using those classes' constructors.</li>
+<li>Instances of <a href="../../dart-core/Type-class.html">Type</a> representing one of the types mentioned above,
+<code>Object</code>, <code>dynamic</code>, <code>void</code> and <code>Never</code> as well as nullable variants
+of all these types. For generic types type arguments must be sendable
+types for the whole type to be sendable.</li>
+</ul>
+<p>If the sender and receiver isolate share the same code (e.g. isolates
+created via <a href="../../dart-isolate/Isolate/spawn.html">Isolate.spawn</a>), the transitive object graph of <code>message</code> can
+contain any object, with the following exceptions:</p>
+<ul>
+<li>Objects with native resources (subclasses of e.g.
+<code>NativeFieldWrapperClass1</code>). A <a href="../../dart-io/Socket-class.html">Socket</a> object for example refers
+internally to objects that have native resources attached and can
+therefore not be sent.</li>
+<li><a href="../../dart-isolate/ReceivePort-class.html">ReceivePort</a></li>
+<li><a href="../../dart-ffi/DynamicLibrary-class.html">DynamicLibrary</a></li>
+<li><a href="../../dart-ffi/Finalizable-class.html">Finalizable</a></li>
+<li><a href="../../dart-core/Finalizer-class.html">Finalizer</a></li>
+<li><a href="../../dart-ffi/NativeFinalizer-class.html">NativeFinalizer</a></li>
+<li><a href="../../dart-developer/UserTag-class.html">UserTag</a></li>
+<li><code>MirrorReference</code></li>
+</ul>
+<p>Instances of classes that either themselves are marked with
+<code>@pragma('vm:isolate-unsendable')</code>, extend or implement such classes
+cannot be sent through the ports.</p>
+<p>Apart from those exceptions any object can be sent. Objects that are
+identified as immutable (e.g. strings) will be shared whereas all other
+objects will be copied.</p>
+<p>The send happens immediately and may have a linear time cost to copy the
+transitive object graph. The send itself doesn't block (i.e. doesn't wait
+until the receiver has received the message). The corresponding receive
+port can receive the message as soon as its isolate's event loop is ready
+to deliver it, independently of what the sending isolate is doing.</p>
+<p>Note: Due to an implementation choice the Dart VM made for how closures
+represent captured state, closures can currently capture more state than
+they need, which can cause the transitive closure to be larger than
+needed. Open bug to address this: <a href="http://dartbug.com/36983" target="_blank">http://dartbug.com/36983<sup>&#127760;</sup></a></p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">void send(Object? message);</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-isolate/index.html">dart:isolate</a></li>
+    <li><a href="../../dart-isolate/SendPort-class.html">SendPort</a></li>
+    <li class="self-crumb">send abstract method</li>
+</ol>
+
+    <h5>SendPort class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right"><ol>
+
+
+
+    
+        <li class="section-title">
+          <a href="/gen-dartdocs/dart-isolate/SendPort-class.html#instance-properties">Properties</a>
+        </li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-isolate/SendPort/hashCode.html">hashCode</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/NativePort/nativePort.html">nativePort</a>
+      <sup
+          class="muted"
+          title="Available on SendPort">(ext)</sup>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/runtimeType.html">runtimeType</a>
+</li>
+
+        <li class="section-title"><a href="/gen-dartdocs/dart-isolate/SendPort-class.html#instance-methods">Methods</a></li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/noSuchMethod.html">noSuchMethod</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-isolate/SendPort/send.html">send</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/toString.html">toString</a>
+</li>
+
+        <li class="section-title"><a href="/gen-dartdocs/dart-isolate/SendPort-class.html#operators">Operators</a></li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-isolate/SendPort/operator_equals.html">operator ==</a>
+</li>
+
+    
+
+    
+
+
+</ol>
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    Dart
+      3.7.1
+  </span>
+  <span class="glue-footer">
+  <span class="no-break">
+    | <a href="https://dart.dev/terms" title="Terms of use" target="_blank">Terms<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy"
+      class="no-automatic-external" target="_blank">Privacy<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://dart.dev/security" title="Security philosophy and practices" target="_blank">Security<sup>&#127760;</sup></a>
+  </span>
+
+  <div class="copyright" style="font-size: 0.9em; color: darkgrey; margin-top: 0.5em;">
+    Except as otherwise noted, this site is licensed under a
+    <a style="color: darkgrey;" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      Creative Commons Attribution 4.0 International License<sup>&#127760;</sup></a>
+    and code samples are licensed under the
+    <a style="color: darkgrey;" href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external" target="_blank">
+      3-Clause BSD License<sup>&#127760;</sup></a>
+  </div>
+</span>
+
+</footer>
+
+
+
+
+<button aria-hidden="true" class="glue-footer__link glue-cookie-notification-bar-control">
+  Cookies management controls
+</button>
+
+
+</body>
+</html>
+

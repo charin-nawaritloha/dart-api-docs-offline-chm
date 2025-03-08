@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the unawaited function from the dart:async library, for the Dart programming language.">
+  <title>unawaited function - dart:async library - Dart API</title>
+  
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../static-assets/github.css">
+  <link rel="stylesheet" href="../static-assets/styles.css">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">Dart</a></li>
+    <li><a href="../dart-async/index.html">dart:async</a></li>
+    <li class="self-crumb">unawaited function</li>
+  </ol>
+  <div class="self-name">unawaited</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="dart-async&#47;dart-async-library-sidebar.html"
+      data-below-sidebar="">
+      <div>
+  <div id="external-links" class="btn-group"><a title="View source code" class="source-link" href="https://github.com/dart-lang/sdk/blob/dcddfaba8d0a77a30afceae5958c2d20fa365c71/sdk/lib/async/future.dart#L1007" target="_blank"><span class="material-symbols-outlined">description</span><sup>&#127760;</sup></a></div>
+<h1><span class="kind-function">unawaited</span> function 
+ 
+</h1></div>
+
+    <section class="multi-line-signature">
+        
+  <div>
+    <ol class="annotation-list">
+        <li>@Since(&quot;2.15&quot;)</li>
+    </ol>
+  </div>
+<span class="returntype">void</span>
+<span class="name ">unawaited</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="unawaited-param-future"><span class="type-annotation"><a href="../dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span>?</span> <span class="parameter-name">future</span></span></li>
+</ol>)
+
+        
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Explicitly ignores a future.</p>
+<p>Not all futures need to be awaited.
+The Dart linter has an optional
+<a href="https://dart.dev/lints/unawaited_futures" target="_blank">"unawaited futures" lint<sup>&#127760;</sup></a>
+which enforces that potential futures
+(expressions with a static type of <a href="../dart-async/Future-class.html">Future</a> or <code>Future?</code>)
+in asynchronous functions are handled <em>somehow</em>.
+If a particular future value doesn't need to be awaited,
+you can call <code>unawaited(...)</code> with it, which will avoid the lint,
+simply because the expression no longer has type <a href="../dart-async/Future-class.html">Future</a>.
+Using <code>unawaited</code> has no other effect.
+You should use <code>unawaited</code> to convey the <em>intention</em> of
+deliberately not waiting for the future.</p>
+<p>If the future completes with an error,
+it was likely a mistake to not await it.
+That error will still occur and will be considered unhandled
+unless the same future is awaited (or otherwise handled) elsewhere too.
+Because of that, <code>unawaited</code> should only be used for futures that
+are <em>expected</em> to complete with a value.
+You can use <a href="../dart-async/FutureExtensions/ignore.html">FutureExtensions.ignore</a> if you also don't want to know
+about errors from this future.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">@Since(&quot;2.15&quot;)
+void unawaited(Future&lt;void&gt;? future) {}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">Dart</a></li>
+    <li><a href="../dart-async/index.html">dart:async</a></li>
+    <li class="self-crumb">unawaited function</li>
+</ol>
+
+    <h5>dart:async library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-left-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right"><ol>
+      <li class="section-title"><a href="/gen-dartdocs/dart-async#classes/index.html">Classes</a></li>
+        <li><a href="/gen-dartdocs/dart-async/Completer-class.html">Completer</a></li>
+        <li><a href="/gen-dartdocs/dart-async/EventSink-class.html">EventSink</a></li>
+        <li><a href="/gen-dartdocs/dart-async/Future-class.html">Future</a></li>
+        <li><a href="/gen-dartdocs/dart-async/FutureOr-class.html">FutureOr</a></li>
+        <li><a href="/gen-dartdocs/dart-async/MultiStreamController-class.html">MultiStreamController</a></li>
+        <li><a href="/gen-dartdocs/dart-async/Stream-class.html">Stream</a></li>
+        <li><a href="/gen-dartdocs/dart-async/StreamConsumer-class.html">StreamConsumer</a></li>
+        <li><a href="/gen-dartdocs/dart-async/StreamController-class.html">StreamController</a></li>
+        <li><a href="/gen-dartdocs/dart-async/StreamIterator-class.html">StreamIterator</a></li>
+        <li><a href="/gen-dartdocs/dart-async/StreamSink-class.html">StreamSink</a></li>
+        <li><a href="/gen-dartdocs/dart-async/StreamSubscription-class.html">StreamSubscription</a></li>
+        <li><a href="/gen-dartdocs/dart-async/StreamTransformer-class.html">StreamTransformer</a></li>
+        <li><a href="/gen-dartdocs/dart-async/StreamTransformerBase-class.html">StreamTransformerBase</a></li>
+        <li><a href="/gen-dartdocs/dart-async/StreamView-class.html">StreamView</a></li>
+        <li><a href="/gen-dartdocs/dart-async/SynchronousStreamController-class.html">SynchronousStreamController</a></li>
+        <li><a href="/gen-dartdocs/dart-async/Timer-class.html">Timer</a></li>
+        <li><a href="/gen-dartdocs/dart-async/Zone-class.html">Zone</a></li>
+        <li><a href="/gen-dartdocs/dart-async/ZoneDelegate-class.html">ZoneDelegate</a></li>
+        <li><a href="/gen-dartdocs/dart-async/ZoneSpecification-class.html">ZoneSpecification</a></li>
+
+
+
+
+
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-async#functions/index.html">Functions</a></li>
+        <li><a href="/gen-dartdocs/dart-async/runZoned.html">runZoned</a></li>
+        <li><a href="/gen-dartdocs/dart-async/runZonedGuarded.html">runZonedGuarded</a></li>
+        <li><a href="/gen-dartdocs/dart-async/scheduleMicrotask.html">scheduleMicrotask</a></li>
+        <li><a href="/gen-dartdocs/dart-async/unawaited.html">unawaited</a></li>
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-async#typedefs/index.html">Typedefs</a></li>
+        <li><a href="/gen-dartdocs/dart-async/ControllerCallback.html">ControllerCallback</a></li>
+        <li><a href="/gen-dartdocs/dart-async/ControllerCancelCallback.html">ControllerCancelCallback</a></li>
+        <li><a href="/gen-dartdocs/dart-async/CreatePeriodicTimerHandler.html">CreatePeriodicTimerHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/CreateTimerHandler.html">CreateTimerHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/ErrorCallbackHandler.html">ErrorCallbackHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/ForkHandler.html">ForkHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/HandleUncaughtErrorHandler.html">HandleUncaughtErrorHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/PrintHandler.html">PrintHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/RegisterBinaryCallbackHandler.html">RegisterBinaryCallbackHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/RegisterCallbackHandler.html">RegisterCallbackHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/RegisterUnaryCallbackHandler.html">RegisterUnaryCallbackHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/RunBinaryHandler.html">RunBinaryHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/RunHandler.html">RunHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/RunUnaryHandler.html">RunUnaryHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/ScheduleMicrotaskHandler.html">ScheduleMicrotaskHandler</a></li>
+        <li><a href="/gen-dartdocs/dart-async/ZoneBinaryCallback.html">ZoneBinaryCallback</a></li>
+        <li><a href="/gen-dartdocs/dart-async/ZoneCallback.html">ZoneCallback</a></li>
+        <li><a href="/gen-dartdocs/dart-async/ZoneUnaryCallback.html">ZoneUnaryCallback</a></li>
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-async#exceptions/index.html">Exceptions</a></li>
+        <li><a href="/gen-dartdocs/dart-async/AsyncError-class.html">AsyncError</a></li>
+        <li><a href="/gen-dartdocs/dart-async/DeferredLoadException-class.html">DeferredLoadException</a></li>
+        <li><a href="/gen-dartdocs/dart-async/ParallelWaitError-class.html">ParallelWaitError</a></li>
+        <li><a href="/gen-dartdocs/dart-async/TimeoutException-class.html">TimeoutException</a></li>
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-async#extensions/index.html">Extensions</a></li>
+        <li><a href="/gen-dartdocs/dart-async/FutureExtensions.html">FutureExtensions</a></li>
+        <li><a href="/gen-dartdocs/dart-async/FutureIterable.html">FutureIterable</a></li>
+        <li><a href="/gen-dartdocs/dart-async/FutureRecord2.html">FutureRecord2</a></li>
+        <li><a href="/gen-dartdocs/dart-async/FutureRecord3.html">FutureRecord3</a></li>
+        <li><a href="/gen-dartdocs/dart-async/FutureRecord4.html">FutureRecord4</a></li>
+        <li><a href="/gen-dartdocs/dart-async/FutureRecord5.html">FutureRecord5</a></li>
+        <li><a href="/gen-dartdocs/dart-async/FutureRecord6.html">FutureRecord6</a></li>
+        <li><a href="/gen-dartdocs/dart-async/FutureRecord7.html">FutureRecord7</a></li>
+        <li><a href="/gen-dartdocs/dart-async/FutureRecord8.html">FutureRecord8</a></li>
+        <li><a href="/gen-dartdocs/dart-async/FutureRecord9.html">FutureRecord9</a></li>
+</ol>
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    Dart
+      3.7.1
+  </span>
+  <span class="glue-footer">
+  <span class="no-break">
+    | <a href="https://dart.dev/terms" title="Terms of use" target="_blank">Terms<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy"
+      class="no-automatic-external" target="_blank">Privacy<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://dart.dev/security" title="Security philosophy and practices" target="_blank">Security<sup>&#127760;</sup></a>
+  </span>
+
+  <div class="copyright" style="font-size: 0.9em; color: darkgrey; margin-top: 0.5em;">
+    Except as otherwise noted, this site is licensed under a
+    <a style="color: darkgrey;" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      Creative Commons Attribution 4.0 International License<sup>&#127760;</sup></a>
+    and code samples are licensed under the
+    <a style="color: darkgrey;" href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external" target="_blank">
+      3-Clause BSD License<sup>&#127760;</sup></a>
+  </div>
+</span>
+
+</footer>
+
+
+
+
+<button aria-hidden="true" class="glue-footer__link glue-cookie-notification-bar-control">
+  Cookies management controls
+</button>
+
+
+</body>
+</html>
+

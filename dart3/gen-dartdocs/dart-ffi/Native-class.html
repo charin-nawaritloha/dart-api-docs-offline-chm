@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Native class from the dart:ffi library, for the Dart programming language.">
+  <title>Native class - dart:ffi library - Dart API</title>
+  
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../static-assets/github.css">
+  <link rel="stylesheet" href="../static-assets/styles.css">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">Dart</a></li>
+    <li><a href="../dart-ffi/index.html">dart:ffi</a></li>
+    <li class="self-crumb">Native<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span> class</li>
+  </ol>
+  <div class="self-name">Native</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="dart-ffi&#47;dart-ffi-library-sidebar.html"
+    data-below-sidebar="dart-ffi&#47;Native-class-sidebar.html">
+    <div>
+  <div id="external-links" class="btn-group"><a title="View source code" class="source-link" href="https://github.com/dart-lang/sdk/blob/dcddfaba8d0a77a30afceae5958c2d20fa365c71/sdk/lib/ffi/ffi.dart#L2430" target="_blank"><span class="material-symbols-outlined">description</span><sup>&#127760;</sup></a></div>
+<h1><span class="kind-class">Native&lt;<wbr><span class="type-parameter">T</span>&gt;</span> class 
+    <a href="https://dart.dev/language/class-modifiers#final" class="feature feature-final" title="This class can neither be extended, implemented, nor mixed in." target="_blank">final<sup>&#127760;</sup></a>
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Annotation binding an external declaration to its native implementation.</p>
+<p>Can only be applied to <code>external</code> declarations of static and top-level
+functions and variables.</p>
+<p>A <a href="../dart-ffi/Native-class.html">Native</a>-annotated <code>external</code> function is implemented by native code.
+The implementation is found in the native library denoted by <a href="../dart-ffi/Native/assetId.html">assetId</a>.
+Similarly, a <a href="../dart-ffi/Native-class.html">Native</a>-annotated <code>external</code> variable is implemented by
+reading from or writing to native memory.</p>
+<p>The compiler and/or runtime provides a binding from <a href="../dart-ffi/Native/assetId.html">assetId</a> to native
+library, which depends on the target platform.
+The compiler/runtime can then resolve/lookup symbols (identifiers)
+against the native library, to find a native function or a native global
+variable, and bind an <code>external</code> Dart function or variable declaration to
+that native declaration.
+By default, the runtime expects a native symbol with the same name as the
+annotated function or variable in Dart. This can be overridden with the
+<a href="../dart-ffi/Native/symbol.html">symbol</a> parameter on the annotation.</p>
+<p>When used on a function, <code>T</code> must be a function type that represents the
+native function's parameter and return types. The parameter and return types
+must be subtypes of <a href="../dart-ffi/NativeType-class.html">NativeType</a>.</p>
+<p>When used on a variable, <code>T</code> must be a compatible native type. For example,
+an <a href="../dart-core/int-class.html">int</a> field can be annotated with <a href="../dart-ffi/Int32-class.html">Int32</a>.</p>
+<p>If the type argument <code>T</code> is omitted in the <code>@Native</code> annotation, it is
+inferred from the static type of the declaration, which must meet the
+following constraints:</p>
+<p>For function or method declarations:</p>
+<ul>
+<li>The return type must be one of the following:
+<ul>
+<li><a href="../dart-ffi/Pointer-class.html">Pointer</a></li>
+<li><code>void</code></li>
+<li>Subtype of compound types, such as <a href="../dart-ffi/Struct-class.html">Struct</a> or <a href="../dart-ffi/Union-class.html">Union</a></li>
+</ul>
+</li>
+<li>The parameter types must be subtypes of compound types or <a href="../dart-ffi/Pointer-class.html">Pointer</a></li>
+</ul>
+<p>For variable declarations, the type can be any of the following:</p>
+<ul>
+<li><a href="../dart-ffi/Pointer-class.html">Pointer</a></li>
+<li>Subtype of compound types, such as <a href="../dart-ffi/Struct-class.html">Struct</a> or <a href="../dart-ffi/Union-class.html">Union</a></li>
+</ul>
+<p>For native global variables that cannot be reassigned, a <code>final</code> variable in
+Dart or a getter can be used to prevent modifications to the native field.</p>
+<p>Example:</p>
+<pre class="language-dart"><code class="language-dart">@Native&lt;Int64 Function(Int64, Int64)&gt;()
+external int sum(int a, int b);
+
+@Native()
+external void free(Pointer p);
+
+@Native&lt;Int64&gt;()
+external int aGlobalInt;
+
+@Native()
+external final Pointer&lt;Char&gt; aGlobalString;
+</code></pre>
+<p>Calling a <code>@Native</code> function, as well as reading or writing to a <code>@Native</code>
+variable, will try to resolve the <a href="../dart-ffi/Native/symbol.html">symbol</a> in (in the order):</p>
+<ol>
+<li>the provided or default <a href="../dart-ffi/Native/assetId.html">assetId</a>,</li>
+<li>the native resolver set with <code>Dart_SetFfiNativeResolver</code> in
+<code>dart_api.h</code>, and</li>
+<li>the current process.</li>
+</ol>
+<p>At least one of those three <em>must</em> provide a binding for the symbol,
+otherwise the method call or the variable access fails.</p>
+<p>NOTE: This is an experimental feature and may change in the future.</p>
+</section>
+
+
+    <section>
+      <dl class="dl-horizontal">
+        
+
+        
+        
+
+
+        
+        
+  <dt>Annotations</dt>
+  <dd>
+    <ul class="annotation-list clazz-relationships">
+        <li>@Since(&#39;2.19&#39;)</li>
+    </ul>
+  </dd>
+
+
+      </dl>
+    </section>
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="Native" class="callable">
+          <span class="name"><a href="../dart-ffi/Native/Native.html">Native</a></span><span class="signature">({<span class="parameter" id="-param-assetId"><span class="type-annotation"><a href="../dart-core/String-class.html">String</a>?</span> <span class="parameter-name">assetId</span>, </span><span class="parameter" id="-param-isLeaf"><span class="type-annotation"><a href="../dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isLeaf</span> = <span class="default-value">false</span>, </span><span class="parameter" id="-param-symbol"><span class="type-annotation"><a href="../dart-core/String-class.html">String</a>?</span> <span class="parameter-name">symbol</span></span>})</span>
+        </dt>
+        <dd>
+          
+            <div class="constructor-modifier features">const</div>
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="assetId" class="property">
+  <span class="name"><a href="../dart-ffi/Native/assetId.html">assetId</a></span>
+  <span class="signature">&#8594; <a href="../dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  The ID of the asset in which <a href="../dart-ffi/Native/symbol.html">symbol</a> is resolved, if not using the
+default.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="../dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="../dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="isLeaf" class="property">
+  <span class="name"><a href="../dart-ffi/Native/isLeaf.html">isLeaf</a></span>
+  <span class="signature">&#8594; <a href="../dart-core/bool-class.html">bool</a></span>
+  
+
+</dt>
+<dd>
+  Whether the function is a leaf function.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="../dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="../dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="symbol" class="property">
+  <span class="name"><a href="../dart-ffi/Native/symbol.html">symbol</a></span>
+  <span class="signature">&#8594; <a href="../dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  The native symbol to be resolved, if not using the default.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="../dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="../dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="../dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="../dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="../dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="../dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+  <section class="summary offset-anchor" id="static-methods">
+    <h2>Static Methods</h2>
+    <dl class="callables">
+        <dt id="addressOf" class="callable">
+  <span class="name"><a href="../dart-ffi/Native/addressOf.html">addressOf</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="../dart-ffi/NativeType-class.html">NativeType</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="addressOf-param-native"><span class="type-annotation"><a href="../dart-core/Object-class.html">Object</a></span> <span class="parameter-name">native</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../dart-ffi/Pointer-class.html">Pointer</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  The native address of the implementation of <code>native</code>.
+  
+
+</dd>
+
+    </dl>
+  </section>
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">Dart</a></li>
+    <li><a href="../dart-ffi/index.html">dart:ffi</a></li>
+    <li class="self-crumb">Native<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span> class</li>
+</ol>
+
+    <h5>dart:ffi library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right"><ol>
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-ffi/Native-class.html#constructors">Constructors</a></li>
+        <li><a href="/gen-dartdocs/dart-ffi/Native/Native.html">Native</a></li>
+
+
+    
+        <li class="section-title">
+          <a href="/gen-dartdocs/dart-ffi/Native-class.html#instance-properties">Properties</a>
+        </li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Native/assetId.html">assetId</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/hashCode.html">hashCode</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Native/isLeaf.html">isLeaf</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/runtimeType.html">runtimeType</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Native/symbol.html">symbol</a>
+</li>
+
+        <li class="section-title inherited"><a href="/gen-dartdocs/dart-ffi/Native-class.html#instance-methods">Methods</a></li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/noSuchMethod.html">noSuchMethod</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/toString.html">toString</a>
+</li>
+
+        <li class="section-title inherited"><a href="/gen-dartdocs/dart-ffi/Native-class.html#operators">Operators</a></li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/operator_equals.html">operator ==</a>
+</li>
+
+    
+
+    
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-ffi/Native-class.html#static-methods">Static methods</a></li>
+        <li><a href="/gen-dartdocs/dart-ffi/Native/addressOf.html">addressOf</a></li>
+
+</ol>
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    Dart
+      3.7.1
+  </span>
+  <span class="glue-footer">
+  <span class="no-break">
+    | <a href="https://dart.dev/terms" title="Terms of use" target="_blank">Terms<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy"
+      class="no-automatic-external" target="_blank">Privacy<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://dart.dev/security" title="Security philosophy and practices" target="_blank">Security<sup>&#127760;</sup></a>
+  </span>
+
+  <div class="copyright" style="font-size: 0.9em; color: darkgrey; margin-top: 0.5em;">
+    Except as otherwise noted, this site is licensed under a
+    <a style="color: darkgrey;" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      Creative Commons Attribution 4.0 International License<sup>&#127760;</sup></a>
+    and code samples are licensed under the
+    <a style="color: darkgrey;" href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external" target="_blank">
+      3-Clause BSD License<sup>&#127760;</sup></a>
+  </div>
+</span>
+
+</footer>
+
+
+
+
+<button aria-hidden="true" class="glue-footer__link glue-cookie-notification-bar-control">
+  Cookies management controls
+</button>
+
+
+</body>
+</html>
+

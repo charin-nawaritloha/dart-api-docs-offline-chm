@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the allocate method from the Allocator class, for the Dart programming language.">
+  <title>allocate method - Allocator class - dart:ffi library - Dart API</title>
+  
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../../static-assets/github.css">
+  <link rel="stylesheet" href="../../static-assets/styles.css">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-ffi/index.html">dart:ffi</a></li>
+    <li><a href="../../dart-ffi/Allocator-class.html">Allocator</a></li>
+    <li class="self-crumb">allocate&lt;<wbr><span class="type-parameter">T extends NativeType</span>&gt; abstract method</li>
+  </ol>
+  <div class="self-name">allocate</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="dart-ffi&#47;Allocator-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+  <div id="external-links" class="btn-group"><a title="View source code" class="source-link" href="https://github.com/dart-lang/sdk/blob/dcddfaba8d0a77a30afceae5958c2d20fa365c71/sdk/lib/ffi/allocation.dart#L86" target="_blank"><span class="material-symbols-outlined">description</span><sup>&#127760;</sup></a></div>
+<h1><span class="kind-method">allocate&lt;<wbr><span class="type-parameter">T extends NativeType</span>&gt;</span> abstract method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="../../dart-ffi/Pointer-class.html">Pointer</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+<span class="name ">allocate</span>&lt;<wbr><span class="type-parameter">T extends NativeType</span>&gt;(<wbr><ol class="parameter-list"> <li><span class="parameter" id="allocate-param-byteCount"><span class="type-annotation"><a href="../../dart-core/int-class.html">int</a></span> <span class="parameter-name">byteCount</span>, {</span></li>
+<li><span class="parameter" id="allocate-param-alignment"><span class="type-annotation"><a href="../../dart-core/int-class.html">int</a>?</span> <span class="parameter-name">alignment</span>, </span></li>
+</ol>})
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Allocates <code>byteCount</code> bytes of memory on the native heap.</p>
+<p>If <code>alignment</code> is provided, the allocated memory will be at least aligned
+to <code>alignment</code> bytes.</p>
+<p>To allocate a multiple of <code>sizeOf&lt;T&gt;()</code> bytes, call the allocator directly
+as a function: <code>allocator&lt;T&gt;(count)</code> (see <a href="../../dart-ffi/AllocatorAlloc/call.html">AllocatorAlloc.call</a> for
+details).</p>
+<pre class="language-dart"><code class="language-dart">// This allocates two bytes. If you intended two Int32's, this is an
+// error.
+allocator.allocate&lt;Int32&gt;(2);
+
+// This allocates eight bytes, which is enough space for two Int32's.
+// However, this is not the idiomatic way.
+allocator.allocate&lt;Int32&gt;(sizeOf&lt;Int32&gt;() * 2);
+
+// The idiomatic way to allocate space for two Int32 is to call the
+// allocator directly as a function.
+allocator&lt;Int32&gt;(2);
+</code></pre>
+<p>Throws an <a href="../../dart-core/ArgumentError-class.html">ArgumentError</a> if the number of bytes or alignment cannot be
+satisfied.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Pointer&lt;T&gt; allocate&lt;T extends NativeType&gt;(int byteCount, {int? alignment});</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">Dart</a></li>
+    <li><a href="../../dart-ffi/index.html">dart:ffi</a></li>
+    <li><a href="../../dart-ffi/Allocator-class.html">Allocator</a></li>
+    <li class="self-crumb">allocate&lt;<wbr><span class="type-parameter">T extends NativeType</span>&gt; abstract method</li>
+</ol>
+
+    <h5>Allocator class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right"><ol>
+
+
+
+    
+        <li class="section-title inherited">
+          <a href="/gen-dartdocs/dart-ffi/Allocator-class.html#instance-properties">Properties</a>
+        </li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/hashCode.html">hashCode</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/runtimeType.html">runtimeType</a>
+</li>
+
+        <li class="section-title"><a href="/gen-dartdocs/dart-ffi/Allocator-class.html#instance-methods">Methods</a></li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Allocator/allocate.html">allocate</a>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/AllocatorAlloc/call.html">call</a>
+      <sup
+          class="muted"
+          title="Available on Allocator">(ext)</sup>
+</li>
+          
+<li>
+  <a href="/gen-dartdocs/dart-ffi/Allocator/free.html">free</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/noSuchMethod.html">noSuchMethod</a>
+</li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/toString.html">toString</a>
+</li>
+
+        <li class="section-title inherited"><a href="/gen-dartdocs/dart-ffi/Allocator-class.html#operators">Operators</a></li>
+          
+<li class="inherited">
+  <a href="/gen-dartdocs/dart-core/Object/operator_equals.html">operator ==</a>
+</li>
+
+    
+
+    
+
+
+</ol>
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    Dart
+      3.7.1
+  </span>
+  <span class="glue-footer">
+  <span class="no-break">
+    | <a href="https://dart.dev/terms" title="Terms of use" target="_blank">Terms<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy"
+      class="no-automatic-external" target="_blank">Privacy<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://dart.dev/security" title="Security philosophy and practices" target="_blank">Security<sup>&#127760;</sup></a>
+  </span>
+
+  <div class="copyright" style="font-size: 0.9em; color: darkgrey; margin-top: 0.5em;">
+    Except as otherwise noted, this site is licensed under a
+    <a style="color: darkgrey;" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      Creative Commons Attribution 4.0 International License<sup>&#127760;</sup></a>
+    and code samples are licensed under the
+    <a style="color: darkgrey;" href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external" target="_blank">
+      3-Clause BSD License<sup>&#127760;</sup></a>
+  </div>
+</span>
+
+</footer>
+
+
+
+
+<button aria-hidden="true" class="glue-footer__link glue-cookie-notification-bar-control">
+  Cookies management controls
+</button>
+
+
+</body>
+</html>
+

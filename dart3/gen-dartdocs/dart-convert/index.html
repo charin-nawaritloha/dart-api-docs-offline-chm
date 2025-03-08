@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="dart:convert library API docs, for the Dart programming language.">
+  <title>dart:convert library - Dart API</title>
+  
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../static-assets/github.css">
+  <link rel="stylesheet" href="../static-assets/styles.css">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">Dart</a></li>
+    <li class="self-crumb">dart:convert</li>
+  </ol>
+  <div class="self-name">dart:convert</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar=""
+    data-below-sidebar="dart-convert&#47;dart-convert-library-sidebar.html">
+  
+    <div>
+      
+  <div id="external-links" class="btn-group"><a title="View source code" class="source-link" href="https://github.com/dart-lang/sdk/blob/dcddfaba8d0a77a30afceae5958c2d20fa365c71/sdk/lib/convert/convert.dart#L163" target="_blank"><span class="material-symbols-outlined">description</span><sup>&#127760;</sup></a></div>
+
+      <h1>
+        <span class="kind-library">dart:convert</span>
+        library 
+ 
+
+      </h1>
+    </div>
+
+    
+<section class="desc markdown">
+  <p>Encoders and decoders for converting between different data representations,
+including JSON and UTF-8.</p>
+<p>In addition to converters for common data representations, this library
+provides support for implementing converters in a way which makes them easy
+to chain and to use with streams.</p>
+<p>To use this library in your code:</p>
+<pre class="language-dart"><code class="language-dart">import 'dart:convert';
+</code></pre>
+<p>Two commonly used converters are the top-level instances of
+<a href="../dart-convert/JsonCodec-class.html">JsonCodec</a> and <a href="../dart-convert/Utf8Codec-class.html">Utf8Codec</a>, named <a href="../dart-convert/json-constant.html">json</a> and <a href="../dart-convert/utf8-constant.html">utf8</a>, respectively.</p>
+<h2 id="json">JSON</h2>
+<p>JSON is a simple text format for representing structured objects and
+collections.</p>
+<p>A <a href="../dart-convert/JsonCodec-class.html">JsonCodec</a> encodes JSON objects to strings and decodes strings to
+JSON objects. The <a href="../dart-convert/json-constant.html">json</a> encoder/decoder transforms between strings and
+object structures, such as lists and maps, using the JSON format.</p>
+<p>The <a href="../dart-convert/json-constant.html">json</a> is the default implementation of <a href="../dart-convert/JsonCodec-class.html">JsonCodec</a>.</p>
+<p>Examples</p>
+<pre class="language-dart"><code class="language-dart">var encoded = json.encode([1, 2, { "a": null }]);
+var decoded = json.decode('["foo", { "bar": 499 }]');
+</code></pre>
+<p>For more information, see also <a href="../dart-convert/JsonEncoder-class.html">JsonEncoder</a> and <a href="../dart-convert/JsonDecoder-class.html">JsonDecoder</a>.</p>
+<h2 id="utf-8">UTF-8</h2>
+<p>A <a href="../dart-convert/Utf8Codec-class.html">Utf8Codec</a> encodes strings to UTF-8 code units (bytes) and decodes
+UTF-8 code units to strings.</p>
+<p>The <a href="../dart-convert/utf8-constant.html">utf8</a> is the default implementation of <a href="../dart-convert/Utf8Codec-class.html">Utf8Codec</a>.</p>
+<p>Example:</p>
+<pre class="language-dart"><code class="language-dart">var encoded = utf8.encode('Îñţérñåţîöñåļîžåţîờñ');
+var decoded = utf8.decode([
+  195, 142, 195, 177, 197, 163, 195, 169, 114, 195, 177, 195, 165, 197,
+  163, 195, 174, 195, 182, 195, 177, 195, 165, 196, 188, 195, 174, 197,
+  190, 195, 165, 197, 163, 195, 174, 225, 187, 157, 195, 177]);
+</code></pre>
+<p>For more information, see also <a href="../dart-convert/Utf8Encoder-class.html">Utf8Encoder</a> and <a href="../dart-convert/Utf8Decoder-class.html">Utf8Decoder</a>.</p>
+<h2 id="ascii">ASCII</h2>
+<p>An <a href="../dart-convert/AsciiCodec-class.html">AsciiCodec</a> encodes strings as ASCII codes stored as bytes and decodes
+ASCII bytes to strings. Not all characters can be represented as ASCII, so
+not all strings can be successfully converted.</p>
+<p>The <a href="../dart-convert/ascii-constant.html">ascii</a> is the default implementation of <a href="../dart-convert/AsciiCodec-class.html">AsciiCodec</a>.</p>
+<p>Example:</p>
+<pre class="language-dart"><code class="language-dart">var encoded = ascii.encode('This is ASCII!');
+var decoded = ascii.decode([0x54, 0x68, 0x69, 0x73, 0x20, 0x69, 0x73,
+                            0x20, 0x41, 0x53, 0x43, 0x49, 0x49, 0x21]);
+</code></pre>
+<p>For more information, see also <a href="../dart-convert/AsciiEncoder-class.html">AsciiEncoder</a> and <a href="../dart-convert/AsciiDecoder-class.html">AsciiDecoder</a>.</p>
+<h2 id="latin-1">Latin-1</h2>
+<p>A <a href="../dart-convert/Latin1Codec-class.html">Latin1Codec</a> encodes strings to ISO Latin-1 (aka ISO-8859-1) bytes
+and decodes Latin-1 bytes to strings. Not all characters can be represented
+as Latin-1, so not all strings can be successfully converted.</p>
+<p>The <a href="../dart-convert/latin1-constant.html">latin1</a> is the default implementation of <a href="../dart-convert/Latin1Codec-class.html">Latin1Codec</a>.</p>
+<p>Example:</p>
+<pre class="language-dart"><code class="language-dart">var encoded = latin1.encode('blåbærgrød');
+var decoded = latin1.decode([0x62, 0x6c, 0xe5, 0x62, 0xe6,
+                             0x72, 0x67, 0x72, 0xf8, 0x64]);
+</code></pre>
+<p>For more information, see also <a href="../dart-convert/Latin1Encoder-class.html">Latin1Encoder</a> and <a href="../dart-convert/Latin1Decoder-class.html">Latin1Decoder</a>.</p>
+<h2 id="base64">Base64</h2>
+<p>A <a href="../dart-convert/Base64Codec-class.html">Base64Codec</a> encodes bytes using the default base64 alphabet,
+decodes using both the base64 and base64url alphabets,
+does not allow invalid characters and requires padding.</p>
+<p>The <a href="../dart-convert/base64-constant.html">base64</a> is the default implementation of <a href="../dart-convert/Base64Codec-class.html">Base64Codec</a>.</p>
+<p>Example:</p>
+<pre class="language-dart"><code class="language-dart">var encoded = base64.encode([0x62, 0x6c, 0xc3, 0xa5, 0x62, 0xc3, 0xa6,
+                             0x72, 0x67, 0x72, 0xc3, 0xb8, 0x64]);
+var decoded = base64.decode('YmzDpWLDpnJncsO4ZAo=');
+</code></pre>
+<p>For more information, see also <a href="../dart-convert/Base64Encoder-class.html">Base64Encoder</a> and <a href="../dart-convert/Base64Decoder-class.html">Base64Decoder</a>.</p>
+<h2 id="converters">Converters</h2>
+<p>Converters are often used with streams
+to transform the data that comes through the stream
+as it becomes available.
+The following code uses two converters.
+The first is a UTF-8 decoder, which converts the data from bytes to UTF-8
+as it is read from a file,
+The second is an instance of <a href="../dart-convert/LineSplitter-class.html">LineSplitter</a>,
+which splits the data on newline boundaries.</p>
+<pre class="language-dart"><code class="language-dart">const showLineNumbers = true;
+var lineNumber = 1;
+var stream = File('quotes.txt').openRead();
+
+stream.transform(utf8.decoder)
+      .transform(const LineSplitter())
+      .forEach((line) {
+        if (showLineNumbers) {
+          stdout.write('${lineNumber++} ');
+        }
+        stdout.writeln(line);
+      });
+</code></pre>
+<p>See the documentation for the <a href="../dart-convert/Codec-class.html">Codec</a> and <a href="../dart-convert/Converter-class.html">Converter</a> classes
+for information about creating your own converters.</p>
+<h2 id="html-escape">HTML Escape</h2>
+<p><a href="../dart-convert/HtmlEscape-class.html">HtmlEscape</a> converter escapes characters with special meaning in HTML.
+The converter finds characters that are significant in HTML source and
+replaces them with corresponding HTML entities.</p>
+<p>Custom escape modes can be created using the <a href="../dart-convert/HtmlEscapeMode/HtmlEscapeMode.html">HtmlEscapeMode.new</a>
+constructor.</p>
+<p>Example:</p>
+<pre class="language-dart"><code class="language-dart">const htmlEscapeMode = HtmlEscapeMode(
+  name: 'custom',
+  escapeLtGt: true,
+  escapeQuot: false,
+  escapeApos: false,
+  escapeSlash: false,
+ );
+
+const HtmlEscape htmlEscape = HtmlEscape(htmlEscapeMode);
+String unescaped = 'Text &amp; subject';
+String escaped = htmlEscape.convert(unescaped);
+print(escaped); // Text &amp;amp; subject
+
+unescaped = '10 &gt; 1 and 1 &lt; 10';
+escaped = htmlEscape.convert(unescaped);
+print(escaped); // 10 &amp;gt; 1 and 1 &amp;lt; 10
+
+unescaped = "Single-quoted: 'text'";
+escaped = htmlEscape.convert(unescaped);
+print(escaped); // Single-quoted: 'text'
+
+unescaped = 'Double-quoted: "text"';
+escaped = htmlEscape.convert(unescaped);
+print(escaped); // Double-quoted: "text"
+
+unescaped = 'Path: /system/';
+escaped = htmlEscape.convert(unescaped);
+print(escaped); // Path: /system/
+</code></pre>
+</section>
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+      <dl>
+          <dt id="AsciiCodec">
+  <span class="name "><a href="../dart-convert/AsciiCodec-class.html">AsciiCodec</a></span> 
+
+</dt>
+<dd>
+  An <a href="../dart-convert/AsciiCodec-class.html">AsciiCodec</a> allows encoding strings as ASCII bytes
+and decoding ASCII bytes to strings.
+</dd>
+
+          <dt id="AsciiDecoder">
+  <span class="name "><a href="../dart-convert/AsciiDecoder-class.html">AsciiDecoder</a></span> 
+
+</dt>
+<dd>
+  Converts ASCII bytes to string.
+</dd>
+
+          <dt id="AsciiEncoder">
+  <span class="name "><a href="../dart-convert/AsciiEncoder-class.html">AsciiEncoder</a></span> 
+
+</dt>
+<dd>
+  Converts strings of only ASCII characters to bytes.
+</dd>
+
+          <dt id="Base64Codec">
+  <span class="name "><a href="../dart-convert/Base64Codec-class.html">Base64Codec</a></span> 
+
+</dt>
+<dd>
+  A <a href="https://tools.ietf.org/html/rfc4648" target="_blank">base64<sup>&#127760;</sup></a> encoder and decoder.
+</dd>
+
+          <dt id="Base64Decoder">
+  <span class="name "><a href="../dart-convert/Base64Decoder-class.html">Base64Decoder</a></span> 
+
+</dt>
+<dd>
+  Decoder for base64 encoded data.
+</dd>
+
+          <dt id="Base64Encoder">
+  <span class="name "><a href="../dart-convert/Base64Encoder-class.html">Base64Encoder</a></span> 
+
+</dt>
+<dd>
+  Base64 and base64url encoding converter.
+</dd>
+
+          <dt id="ByteConversionSink">
+  <span class="name "><a href="../dart-convert/ByteConversionSink-class.html">ByteConversionSink</a></span> 
+
+</dt>
+<dd>
+  The <a href="../dart-convert/ByteConversionSink-class.html">ByteConversionSink</a> provides an interface for converters to
+efficiently transmit byte data.
+</dd>
+
+          <dt id="ChunkedConversionSink">
+  <span class="name "><a href="../dart-convert/ChunkedConversionSink-class.html">ChunkedConversionSink</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-convert/ChunkedConversionSink-class.html">ChunkedConversionSink</a> is used to transmit data more efficiently between
+two converters during chunked conversions.
+</dd>
+
+          <dt id="ClosableStringSink">
+  <span class="name "><a href="../dart-convert/ClosableStringSink-class.html">ClosableStringSink</a></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-convert/ClosableStringSink-class.html">ClosableStringSink</a> extends the <a href="../dart-core/StringSink-class.html">StringSink</a> interface by adding a
+<code>close</code> method.
+</dd>
+
+          <dt id="Codec">
+  <span class="name "><a href="../dart-convert/Codec-class.html">Codec</a><span class="signature">&lt;<wbr><span class="type-parameter">S</span>, <span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-convert/Codec-class.html">Codec</a> encodes and (if supported) decodes data.
+</dd>
+
+          <dt id="Converter">
+  <span class="name "><a href="../dart-convert/Converter-class.html">Converter</a><span class="signature">&lt;<wbr><span class="type-parameter">S</span>, <span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-convert/Converter-class.html">Converter</a> converts data from one representation into another.
+</dd>
+
+          <dt id="Encoding">
+  <span class="name "><a href="../dart-convert/Encoding-class.html">Encoding</a></span> 
+
+</dt>
+<dd>
+  Open-ended set of encodings.
+</dd>
+
+          <dt id="HtmlEscape">
+  <span class="name "><a href="../dart-convert/HtmlEscape-class.html">HtmlEscape</a></span> 
+
+</dt>
+<dd>
+  Converter which escapes characters with special meaning in HTML.
+</dd>
+
+          <dt id="HtmlEscapeMode">
+  <span class="name "><a href="../dart-convert/HtmlEscapeMode-class.html">HtmlEscapeMode</a></span> 
+
+</dt>
+<dd>
+  HTML escape modes.
+</dd>
+
+          <dt id="JsonCodec">
+  <span class="name "><a href="../dart-convert/JsonCodec-class.html">JsonCodec</a></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-convert/JsonCodec-class.html">JsonCodec</a> encodes JSON objects to strings and decodes strings to
+JSON objects.
+</dd>
+
+          <dt id="JsonDecoder">
+  <span class="name "><a href="../dart-convert/JsonDecoder-class.html">JsonDecoder</a></span> 
+
+</dt>
+<dd>
+  This class parses JSON strings and builds the corresponding objects.
+</dd>
+
+          <dt id="JsonEncoder">
+  <span class="name "><a href="../dart-convert/JsonEncoder-class.html">JsonEncoder</a></span> 
+
+</dt>
+<dd>
+  This class converts JSON objects to strings.
+</dd>
+
+          <dt id="JsonUtf8Encoder">
+  <span class="name "><a href="../dart-convert/JsonUtf8Encoder-class.html">JsonUtf8Encoder</a></span> 
+
+</dt>
+<dd>
+  Encoder that encodes a single object as a UTF-8 encoded JSON string.
+</dd>
+
+          <dt id="Latin1Codec">
+  <span class="name "><a href="../dart-convert/Latin1Codec-class.html">Latin1Codec</a></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-convert/Latin1Codec-class.html">Latin1Codec</a> encodes strings to ISO Latin-1 (aka ISO-8859-1) bytes
+and decodes Latin-1 bytes to strings.
+</dd>
+
+          <dt id="Latin1Decoder">
+  <span class="name "><a href="../dart-convert/Latin1Decoder-class.html">Latin1Decoder</a></span> 
+
+</dt>
+<dd>
+  This class converts Latin-1 bytes (lists of unsigned 8-bit integers)
+to a string.
+</dd>
+
+          <dt id="Latin1Encoder">
+  <span class="name "><a href="../dart-convert/Latin1Encoder-class.html">Latin1Encoder</a></span> 
+
+</dt>
+<dd>
+  This class converts strings of only ISO Latin-1 characters to bytes.
+</dd>
+
+          <dt id="LineSplitter">
+  <span class="name "><a href="../dart-convert/LineSplitter-class.html">LineSplitter</a></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-async/StreamTransformer-class.html">StreamTransformer</a> that splits a <a href="../dart-core/String-class.html">String</a> into individual lines.
+</dd>
+
+          <dt id="StringConversionSink">
+  <span class="name "><a href="../dart-convert/StringConversionSink-class.html">StringConversionSink</a></span> 
+
+</dt>
+<dd>
+  A sink for converters to efficiently transmit String data.
+</dd>
+
+          <dt id="Utf8Codec">
+  <span class="name "><a href="../dart-convert/Utf8Codec-class.html">Utf8Codec</a></span> 
+
+</dt>
+<dd>
+  A <a href="../dart-convert/Utf8Codec-class.html">Utf8Codec</a> encodes strings to utf-8 code units (bytes) and decodes
+UTF-8 code units to strings.
+</dd>
+
+          <dt id="Utf8Decoder">
+  <span class="name "><a href="../dart-convert/Utf8Decoder-class.html">Utf8Decoder</a></span> 
+
+</dt>
+<dd>
+  This class converts UTF-8 code units (lists of unsigned 8-bit integers)
+to a string.
+</dd>
+
+          <dt id="Utf8Encoder">
+  <span class="name "><a href="../dart-convert/Utf8Encoder-class.html">Utf8Encoder</a></span> 
+
+</dt>
+<dd>
+  This class converts strings to their UTF-8 code units (a list of
+unsigned 8-bit integers).
+</dd>
+
+      </dl>
+    </section>
+
+
+
+
+
+    <section class="summary offset-anchor" id="constants">
+      <h2>Constants</h2>
+      <dl class="properties">
+          <dt id="ascii" class="constant">
+    <span class="name "><a href="../dart-convert/ascii-constant.html">ascii</a></span>
+  <span class="signature">&#8594; const <a href="../dart-convert/AsciiCodec-class.html">AsciiCodec</a></span>
+  
+
+</dt>
+<dd>
+  An instance of the default implementation of the <a href="../dart-convert/AsciiCodec-class.html">AsciiCodec</a>.
+  
+
+</dd>
+
+          <dt id="base64" class="constant">
+    <span class="name "><a href="../dart-convert/base64-constant.html">base64</a></span>
+  <span class="signature">&#8594; const <a href="../dart-convert/Base64Codec-class.html">Base64Codec</a></span>
+  
+
+</dt>
+<dd>
+  A <a href="https://tools.ietf.org/html/rfc4648" target="_blank">base64<sup>&#127760;</sup></a> encoder and decoder.
+  
+
+</dd>
+
+          <dt id="base64Url" class="constant">
+    <span class="name "><a href="../dart-convert/base64Url-constant.html">base64Url</a></span>
+  <span class="signature">&#8594; const <a href="../dart-convert/Base64Codec-class.html">Base64Codec</a></span>
+  
+
+</dt>
+<dd>
+  A <a href="https://tools.ietf.org/html/rfc4648" target="_blank">base64url<sup>&#127760;</sup></a> encoder and decoder.
+  
+
+</dd>
+
+          <dt id="htmlEscape" class="constant">
+    <span class="name "><a href="../dart-convert/htmlEscape-constant.html">htmlEscape</a></span>
+  <span class="signature">&#8594; const <a href="../dart-convert/HtmlEscape-class.html">HtmlEscape</a></span>
+  
+
+</dt>
+<dd>
+  A <code>String</code> converter that converts characters to HTML entities.
+  
+
+</dd>
+
+          <dt id="json" class="constant">
+    <span class="name "><a href="../dart-convert/json-constant.html">json</a></span>
+  <span class="signature">&#8594; const <a href="../dart-convert/JsonCodec-class.html">JsonCodec</a></span>
+  
+
+</dt>
+<dd>
+  An instance of the default implementation of the <a href="../dart-convert/JsonCodec-class.html">JsonCodec</a>.
+  
+
+</dd>
+
+          <dt id="latin1" class="constant">
+    <span class="name "><a href="../dart-convert/latin1-constant.html">latin1</a></span>
+  <span class="signature">&#8594; const <a href="../dart-convert/Latin1Codec-class.html">Latin1Codec</a></span>
+  
+
+</dt>
+<dd>
+  An instance of the default implementation of the <a href="../dart-convert/Latin1Codec-class.html">Latin1Codec</a>.
+  
+
+</dd>
+
+          <dt id="unicodeBomCharacterRune" class="constant">
+    <span class="name "><a href="../dart-convert/unicodeBomCharacterRune-constant.html">unicodeBomCharacterRune</a></span>
+  <span class="signature">&#8594; const <a href="../dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  The Unicode Byte Order Marker (BOM) character <code>U+FEFF</code>.
+  
+
+</dd>
+
+          <dt id="unicodeReplacementCharacterRune" class="constant">
+    <span class="name "><a href="../dart-convert/unicodeReplacementCharacterRune-constant.html">unicodeReplacementCharacterRune</a></span>
+  <span class="signature">&#8594; const <a href="../dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  The Unicode Replacement character <code>U+FFFD</code> (�).
+  
+
+</dd>
+
+          <dt id="utf8" class="constant">
+    <span class="name "><a href="../dart-convert/utf8-constant.html">utf8</a></span>
+  <span class="signature">&#8594; const <a href="../dart-convert/Utf8Codec-class.html">Utf8Codec</a></span>
+  
+
+</dt>
+<dd>
+  An instance of the default implementation of the <a href="../dart-convert/Utf8Codec-class.html">Utf8Codec</a>.
+  
+
+</dd>
+
+      </dl>
+    </section>
+
+
+    <section class="summary offset-anchor" id="functions">
+      <h2>Functions</h2>
+      <dl class="callables">
+          <dt id="base64Decode" class="callable">
+  <span class="name"><a href="../dart-convert/base64Decode.html">base64Decode</a></span><span class="signature">(<wbr><span class="parameter" id="base64Decode-param-source"><span class="type-annotation"><a href="../dart-core/String-class.html">String</a></span> <span class="parameter-name">source</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../dart-typed_data/Uint8List-class.html">Uint8List</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Decodes <a href="https://tools.ietf.org/html/rfc4648" target="_blank">base64<sup>&#127760;</sup></a> or <a href="https://tools.ietf.org/html/rfc4648" target="_blank">base64url<sup>&#127760;</sup></a> encoded bytes.
+  
+
+</dd>
+
+          <dt id="base64Encode" class="callable">
+  <span class="name"><a href="../dart-convert/base64Encode.html">base64Encode</a></span><span class="signature">(<wbr><span class="parameter" id="base64Encode-param-bytes"><span class="type-annotation"><a href="../dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">bytes</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Encodes <code>bytes</code> using <a href="https://tools.ietf.org/html/rfc4648" target="_blank">base64<sup>&#127760;</sup></a> encoding.
+  
+
+</dd>
+
+          <dt id="base64UrlEncode" class="callable">
+  <span class="name"><a href="../dart-convert/base64UrlEncode.html">base64UrlEncode</a></span><span class="signature">(<wbr><span class="parameter" id="base64UrlEncode-param-bytes"><span class="type-annotation"><a href="../dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">bytes</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Encodes <code>bytes</code> using <a href="https://tools.ietf.org/html/rfc4648" target="_blank">base64url<sup>&#127760;</sup></a> encoding.
+  
+
+</dd>
+
+          <dt id="jsonDecode" class="callable">
+  <span class="name"><a href="../dart-convert/jsonDecode.html">jsonDecode</a></span><span class="signature">(<wbr><span class="parameter" id="jsonDecode-param-source"><span class="type-annotation"><a href="../dart-core/String-class.html">String</a></span> <span class="parameter-name">source</span>, {</span><span class="parameter" id="jsonDecode-param-reviver"><span class="type-annotation"><a href="../dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">reviver</span>(<span class="parameter" id="reviver-param-key"><span class="type-annotation"><a href="../dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">key</span>, </span><span class="parameter" id="reviver-param-value"><span class="type-annotation"><a href="../dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">value</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Parses the string and returns the resulting Json object.
+  
+
+</dd>
+
+          <dt id="jsonEncode" class="callable">
+  <span class="name"><a href="../dart-convert/jsonEncode.html">jsonEncode</a></span><span class="signature">(<wbr><span class="parameter" id="jsonEncode-param-object"><span class="type-annotation"><a href="../dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">object</span>, {</span><span class="parameter" id="jsonEncode-param-toEncodable"><span class="type-annotation"><a href="../dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">toEncodable</span>(<span class="parameter" id="toEncodable-param-nonEncodable"><span class="type-annotation"><a href="../dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">nonEncodable</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="../dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Converts <code>object</code> to a JSON string.
+  
+
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="typedefs">
+      <h2>Typedefs</h2>
+      <dl>
+          
+  <dt id="ByteConversionSinkBase" class="">
+  <span class="name"><a href="../dart-convert/ByteConversionSinkBase.html">ByteConversionSinkBase</a></span>
+    = <a href="../dart-convert/ByteConversionSink-class.html">ByteConversionSink</a>
+  </span>
+  
+
+</dt>
+<dd>
+  This class provides a base-class for converters that need to accept byte
+inputs.
+  
+
+</dd>
+
+
+          
+  <dt id="StringConversionSinkBase" class="">
+  <span class="name"><a href="../dart-convert/StringConversionSinkBase.html">StringConversionSinkBase</a></span>
+    = <a href="../dart-convert/StringConversionSink-class.html">StringConversionSink</a>
+  </span>
+  
+
+</dt>
+<dd>
+  This class provides a base-class for converters that need to accept String
+inputs.
+  
+
+</dd>
+
+
+          
+  <dt id="StringConversionSinkMixin" class="">
+  <span class="name"><a href="../dart-convert/StringConversionSinkMixin.html">StringConversionSinkMixin</a></span>
+    = <a href="../dart-convert/StringConversionSink-class.html">StringConversionSink</a>
+  </span>
+  
+
+</dt>
+<dd>
+  This class provides a mixin for converters that need to accept String
+inputs.
+  
+
+</dd>
+
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="exceptions">
+      <h2>Exceptions / Errors</h2>
+      <dl>
+          <dt id="JsonCyclicError">
+  <span class="name "><a href="../dart-convert/JsonCyclicError-class.html">JsonCyclicError</a></span> 
+
+</dt>
+<dd>
+  Reports that an object could not be stringified due to cyclic references.
+</dd>
+
+          <dt id="JsonUnsupportedObjectError">
+  <span class="name "><a href="../dart-convert/JsonUnsupportedObjectError-class.html">JsonUnsupportedObjectError</a></span> 
+
+</dt>
+<dd>
+  Error thrown by JSON serialization if an object cannot be serialized.
+</dd>
+
+      </dl>
+    </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">Dart</a></li>
+    <li class="self-crumb">dart:convert</li>
+</ol>
+
+    <h5><span class="package-name">Dart</span> <span class="package-kind">SDK</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li class="section-subtitle">Core</li>
+        <li class="section-subitem"><a href="../dart-async/index.html">dart:async</a></li>
+        <li class="section-subitem"><a href="../dart-collection/index.html">dart:collection</a></li>
+        <li class="section-subitem"><a href="../dart-convert/index.html">dart:convert</a></li>
+        <li class="section-subitem"><a href="../dart-core/index.html">dart:core</a></li>
+        <li class="section-subitem"><a href="../dart-developer/index.html">dart:developer</a></li>
+        <li class="section-subitem"><a href="../dart-math/index.html">dart:math</a></li>
+        <li class="section-subitem"><a href="../dart-typed_data/index.html">dart:typed_data</a></li>
+      <li class="section-subtitle">VM</li>
+        <li class="section-subitem"><a href="../dart-ffi/index.html">dart:ffi</a></li>
+        <li class="section-subitem"><a href="../dart-io/index.html">dart:io</a></li>
+        <li class="section-subitem"><a href="../dart-isolate/index.html">dart:isolate</a></li>
+        <li class="section-subitem"><a href="../dart-mirrors/index.html">dart:mirrors</a></li>
+      <li class="section-subtitle">Web</li>
+        <li class="section-subitem">
+          <a href="https:&#47;&#47;pub.dev&#47;documentation&#47;web&#47;latest&#47;" target="_blank" target="_blank">
+            package:web
+            <span class="material-symbols-outlined">open_in_new</span>
+          <sup>&#127760;</sup></a>
+        </li>
+        <li class="section-subitem"><a href="../dart-js_interop/index.html">dart:js_interop</a></li>
+        <li class="section-subitem"><a href="../dart-js_interop_unsafe/index.html">dart:js_interop_unsafe</a></li>
+      <li class="section-subtitle">Web (Legacy)</li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-html/index.html">dart:html</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-indexed_db/index.html">dart:indexed_db</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-js/index.html">dart:js</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-js_util/index.html">dart:js_util</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-svg/index.html">dart:svg</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-web_audio/index.html">dart:web_audio</a></li>
+        <li class="section-subitem"><a class="deprecated" href="../dart-web_gl/index.html">dart:web_gl</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right"><ol>
+      <li class="section-title"><a href="/gen-dartdocs/dart-convert#classes/index.html">Classes</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/AsciiCodec-class.html">AsciiCodec</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/AsciiDecoder-class.html">AsciiDecoder</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/AsciiEncoder-class.html">AsciiEncoder</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Base64Codec-class.html">Base64Codec</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Base64Decoder-class.html">Base64Decoder</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Base64Encoder-class.html">Base64Encoder</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/ByteConversionSink-class.html">ByteConversionSink</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/ChunkedConversionSink-class.html">ChunkedConversionSink</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/ClosableStringSink-class.html">ClosableStringSink</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Codec-class.html">Codec</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Converter-class.html">Converter</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Encoding-class.html">Encoding</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/HtmlEscape-class.html">HtmlEscape</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/HtmlEscapeMode-class.html">HtmlEscapeMode</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/JsonCodec-class.html">JsonCodec</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/JsonDecoder-class.html">JsonDecoder</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/JsonEncoder-class.html">JsonEncoder</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/JsonUtf8Encoder-class.html">JsonUtf8Encoder</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Latin1Codec-class.html">Latin1Codec</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Latin1Decoder-class.html">Latin1Decoder</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Latin1Encoder-class.html">Latin1Encoder</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/LineSplitter-class.html">LineSplitter</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/StringConversionSink-class.html">StringConversionSink</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Utf8Codec-class.html">Utf8Codec</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Utf8Decoder-class.html">Utf8Decoder</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/Utf8Encoder-class.html">Utf8Encoder</a></li>
+
+
+
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-convert#constants/index.html">Constants</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/ascii-constant.html">ascii</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/base64-constant.html">base64</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/base64Url-constant.html">base64Url</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/htmlEscape-constant.html">htmlEscape</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/json-constant.html">json</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/latin1-constant.html">latin1</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/unicodeBomCharacterRune-constant.html">unicodeBomCharacterRune</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/unicodeReplacementCharacterRune-constant.html">unicodeReplacementCharacterRune</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/utf8-constant.html">utf8</a></li>
+
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-convert#functions/index.html">Functions</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/base64Decode.html">base64Decode</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/base64Encode.html">base64Encode</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/base64UrlEncode.html">base64UrlEncode</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/jsonDecode.html">jsonDecode</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/jsonEncode.html">jsonEncode</a></li>
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-convert#typedefs/index.html">Typedefs</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/ByteConversionSinkBase.html">ByteConversionSinkBase</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/StringConversionSinkBase.html">StringConversionSinkBase</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/StringConversionSinkMixin.html">StringConversionSinkMixin</a></li>
+
+      <li class="section-title"><a href="/gen-dartdocs/dart-convert#exceptions/index.html">Exceptions</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/JsonCyclicError-class.html">JsonCyclicError</a></li>
+        <li><a href="/gen-dartdocs/dart-convert/JsonUnsupportedObjectError-class.html">JsonUnsupportedObjectError</a></li>
+
+</ol>
+</div><!--/sidebar-offcanvas-right-->
+</main>
+<footer>
+  <span class="no-break">
+    Dart
+      3.7.1
+  </span>
+  <span class="glue-footer">
+  <span class="no-break">
+    | <a href="https://dart.dev/terms" title="Terms of use" target="_blank">Terms<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy"
+      class="no-automatic-external" target="_blank">Privacy<sup>&#127760;</sup></a>
+  </span>
+  <span class="no-break">
+    | <a href="https://dart.dev/security" title="Security philosophy and practices" target="_blank">Security<sup>&#127760;</sup></a>
+  </span>
+
+  <div class="copyright" style="font-size: 0.9em; color: darkgrey; margin-top: 0.5em;">
+    Except as otherwise noted, this site is licensed under a
+    <a style="color: darkgrey;" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      Creative Commons Attribution 4.0 International License<sup>&#127760;</sup></a>
+    and code samples are licensed under the
+    <a style="color: darkgrey;" href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external" target="_blank">
+      3-Clause BSD License<sup>&#127760;</sup></a>
+  </div>
+</span>
+
+</footer>
+
+
+
+
+<button aria-hidden="true" class="glue-footer__link glue-cookie-notification-bar-control">
+  Cookies management controls
+</button>
+
+
+</body>
+</html>
+
